@@ -94,7 +94,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     },
     {
       school: "Kendriya Vidyalaya Keltron Nagar",
-      degree: "Secondary (X) - 77% | Senior Secondary (XII) - 80%",
+      degree: "Secondary (X) | Senior Secondary (XII)",
       start: "2021",
       end: "2023",
     },
