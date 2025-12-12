@@ -152,6 +152,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     },
   ],
   open_source: [
+    "https://github.com/anugrahk21/Project-Cerberus",
     "https://github.com/anugrahk21/Cyber-Projects",
     "https://github.com/anugrahk21/Personal-AI-Ally",
   ],

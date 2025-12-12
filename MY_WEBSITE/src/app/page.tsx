@@ -167,15 +167,20 @@ export default function Page() {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
+        // Cache version - increment this when you change repositories
+        const CACHE_VERSION = "v2";
+
         // Check if we have cached data and it's still valid (less than 3 hours old)
         const cachedData = localStorage.getItem("githubRepoData");
         const cachedTimestamp = localStorage.getItem("githubRepoTimestamp");
+        const cachedVersion = localStorage.getItem("githubCacheVersion");
         const currentTime = new Date().getTime();
 
-        // If we have valid cached data (less than 3 hours old)
+        // If we have valid cached data (less than 3 hours old) AND same version
         if (
           cachedData &&
           cachedTimestamp &&
+          cachedVersion === CACHE_VERSION &&
           currentTime - parseInt(cachedTimestamp) < 3 * 60 * 60 * 1000
         ) {
           console.log("Using cached GitHub repository data");
@@ -222,10 +227,11 @@ export default function Page() {
           }
         }
 
-        // Save the fetched data to localStorage with current timestamp
+        // Save the fetched data to localStorage with current timestamp and version
         if (results.length > 0) {
           localStorage.setItem("githubRepoData", JSON.stringify(results));
           localStorage.setItem("githubRepoTimestamp", currentTime.toString());
+          localStorage.setItem("githubCacheVersion", "v2");
           setRepoData(results);
         } else if (cachedData) {
           // If all new requests failed but we have old cached data, use that
