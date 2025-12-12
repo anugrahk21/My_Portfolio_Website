@@ -1,0 +1,235 @@
+%-------------------------
+% Resume in Latex
+% Modified for Cybersecurity Student
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+
+\input{glyphtounicode}      % Ensure Unicode mapping for all glyphs
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Ensure the PDF output is machine readable / ATS parsable
+\pdfgentounicode=1
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Anugrah K} \\ \vspace{1pt}
+    \small +91-95396-94902 $|$ \href{mailto:anugrah.k910@gmail.com}{\underline{anugrah.k910@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/anugrah-k}{\underline{linkedin.com/in/anugrah-k}} $|$
+    \href{https://github.com/anugrahk21}{\underline{github.com/anugrahk21}}
+\end{center}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C/C++, Java, SQL} \\
+     \textbf{Security Tools}{: Burp Suite, Wireshark, Nmap, Metasploitable} \\
+     \textbf{Frameworks \& Platforms}{: Linux, Git, VMWare/VirtualBox, VS Code} \\
+     \textbf{AI \& GenAI}{: Prompt Engineering, LLM Integration (Gemini API), AI-Assisted Development, AI Safety \& Guardrails} \\
+     \textbf{Core Areas}{: Web App Security, Network Security, Penetration Testing, Research \& Development} \\
+     \textbf{Soft Skills}{: Technical Documentation, Critical Thinking, Research \& Analysis, Knowledge Sharing, Attention to Detail}
+     }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS & TRAINING-----------
+\section{Certifications \& Training}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Google Cybersecurity Professional Certificate}{In Progress, Foundations Completed}
+      {Google}{Coursera}
+      \resumeItemListStart
+        \resumeItem{Currently progressing through applied labs and hands-on security modules}
+        \resumeItem{Completed foundational topics in network security, threat analysis, and Linux tools}
+        \resumeItem{Building practical experience for industry-recognized cybersecurity skills}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AI Agents Intensive Training with Google}{Completed: Nov 2025}
+      {Google}{Online}
+      \resumeItemListStart
+        \resumeItem{Completed a 5-day online intensive led by Google ML researchers and engineers}
+        \resumeItem{Built and deployed AI agents covering models, orchestration, memory, and evaluation}
+        \resumeItem{Included live sessions, hands-on codelabs, and a final capstone project (Kaggle badge earned)}
+      \resumeItemListEnd
+
+
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/anugrahk21/Cyber-Projects/tree/main/P1}{Password Security Tool}} $|$ \emph{Python, Cryptographic Libraries, Regular Expressions}}{2025}
+          \resumeItemListStart
+            \resumeItem{Developed a Python tool for advanced password strength analysis via a smart scoring algorithm (0-100 points)}
+            \resumeItem{Implemented secure password generation with entropy calculation and simulated breach detection}
+            \resumeItem{Gained hands-on experience with password entropy and secure random number generation}
+          \resumeItemListEnd
+
+       \resumeProjectHeading
+          {\textbf{\href{https://personal-ai-ally.onrender.com/}{AI Personal Life Coach}} $|$ \emph{Python, Flask, Google Gemini API, HTML/CSS}}{2025}
+          \resumeItemListStart
+            \resumeItem{Engineered a full-stack AI agent using Python, Flask, and Gemini 2.0 for real-time, context-aware guidance}
+            \resumeItem{Implemented advanced prompt engineering and session memory to maintain a consistent therapeutic persona}
+            \resumeItem{Integrated safety guardrails to detect self-harm triggers and enforce professional medical disclaimers}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+    
+
+
+
+%-----------PUBLICATIONS / PATENTS-----------
+\section{Publications \& Patents}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Bioreceptive Concrete Panels for Indian Climates}{In Progress}
+      {Research Manuscript}{Target: Materials/Sustainable Built Environment}
+      
+      \resumeItemListStart
+        \resumeItem{Validated design assumptions via literature review and lab-scale formulation planning}
+        \resumeItem{Outlined mix tuning for porosity, moisture retention, and surface micro-topography}
+        \resumeItem{Defined test plan for warm–humid conditions and monsoon variability (prototyping next)}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {A Smart Cooking System}{Filed: May 2025}
+      {Patent Application}{Patent Pending}
+
+      \resumeItemListStart
+        \resumeItem{Completed system architecture and control logic for an IoT-assisted cooking workflow}
+        \resumeItem{Specified safety, timing, and alert mechanisms with event-driven design}
+        \resumeItem{Prepared prototyping plan for sensor integration and device orchestration (next phase)}
+      \resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Lovely Professional University}{Aug. 2023 -- Present}
+      {B.Tech in Computer Science \& Engineering (Cybersecurity)}{Punjab, India}
+      \resumeItemListStart
+        \resumeItem{Current CGPA: 7.42}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Kendriya Vidyalaya Keltron Nagar}{Kannur, Kerala}
+      {Secondary (X) -- 77\% $|$ Senior Secondary (XII) -- 80\%}{2021 -- 2023}
+
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+
+\end{document}
