@@ -142,10 +142,6 @@ export default function Page() {
   // Command menu links
   const commandLinks = [
     {
-      url: RESUME_DATA.personalWebsiteUrl,
-      title: "Personal Website",
-    },
-    {
       url: "/blog",
       title: "Blog",
     },
@@ -475,28 +471,7 @@ export default function Page() {
           </Section>
 
           <Section id="projects" className="print-force-new-page scroll-mt-16">
-            <h2 className="text-xl font-bold">Research Projects</h2>
-            <div className="-mx-3 mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
-              {RESUME_DATA.researchProjects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <ProjectCard
-                    title={project.title}
-                    description={project.description}
-                    tags={project.techStack}
-                    link={"link" in project ? project.link.href : undefined}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </Section>
-
-          <Section className="print-force-new-page scroll-mt-16">
-            <h2 className="text-xl font-bold">Other Projects</h2>
+            <h2 className="text-xl font-bold">Projects</h2>
             <div className="-mx-3 mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
               {RESUME_DATA.projects.map((project, index) => (
                 <motion.div

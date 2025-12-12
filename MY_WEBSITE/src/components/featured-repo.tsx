@@ -17,6 +17,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { AnimatedGradientBorder } from "./magicui/gradient-border";
 
 interface Repository {
   id: number;
@@ -40,65 +41,132 @@ interface FeaturedRepoProps {
 }
 
 export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
+  // Check if this is Project-Cerberus to add gradient border
+  const isCerberus = repo.name.toLowerCase().includes("cerberus");
+
+  const cardContent = (
+    <Card className="group h-full overflow-hidden border-0 p-3 transition-all duration-300">
+      <CardHeader className="p-0 pb-3">
+        <div className="space-y-1">
+          <CardTitle className="flex items-center justify-between text-base">
+            <div className="inline-flex items-center gap-2">
+              {repo.name}
+              <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+            </div>
+            <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-1">
+                <StarIcon className="h-4 w-4 text-yellow-400" />
+                <span>{repo.stargazers_count}</span>
+              </div>
+              {repo.forks_count > 0 && (
+                <div className="flex items-center space-x-1">
+                  <GitForkIcon className="h-4 w-4" />
+                  <span>{repo.forks_count}</span>
+                </div>
+              )}
+            </div>
+          </CardTitle>
+          <CardDescription className="line-clamp-2 font-mono text-xs">
+            {repo.description}
+          </CardDescription>
+        </div>
+      </CardHeader>
+      <CardContent className="p-0">
+        <div className="mt-2 flex flex-wrap gap-1">
+          {repo.language && (
+            <Badge
+              className={cn(
+                "px-1.5 py-0.5 text-[10px]",
+                repo.featured &&
+                "bg-primary/20 text-primary hover:bg-primary/30",
+              )}
+            >
+              {repo.language}
+            </Badge>
+          )}
+          {repo.topics.slice(0, 4).map((topic) => (
+            <Badge
+              className="px-1.5 py-0.5 text-[10px]"
+              variant="secondary"
+              key={topic}
+            >
+              {topic}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
     >
-      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-        <Card className="group h-full overflow-hidden border border-muted p-3 transition-all duration-300 hover:border-primary/50 hover:shadow-md">
-          <CardHeader className="p-0 pb-3">
-            <div className="space-y-1">
-              <CardTitle className="flex items-center justify-between text-base">
-                <div className="inline-flex items-center gap-2">
-                  {repo.name}
-                  <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
-                </div>
-                <div className="flex items-center space-x-3 text-sm text-muted-foreground">
-                  <div className="flex items-center space-x-1">
-                    <StarIcon className="h-4 w-4 text-yellow-400" />
-                    <span>{repo.stargazers_count}</span>
+      {isCerberus ? (
+        <AnimatedGradientBorder
+          containerClassName="h-full"
+          href={repo.html_url}
+          showArrowButton={true}
+        >
+          {cardContent}
+        </AnimatedGradientBorder>
+      ) : (
+        <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+          <Card className="group h-full overflow-hidden border border-muted p-3 transition-all duration-300 hover:border-primary/50 hover:shadow-md">
+            <CardHeader className="p-0 pb-3">
+              <div className="space-y-1">
+                <CardTitle className="flex items-center justify-between text-base">
+                  <div className="inline-flex items-center gap-2">
+                    {repo.name}
+                    <ArrowUpRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
-                  {repo.forks_count > 0 && (
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                     <div className="flex items-center space-x-1">
-                      <GitForkIcon className="h-4 w-4" />
-                      <span>{repo.forks_count}</span>
+                      <StarIcon className="h-4 w-4 text-yellow-400" />
+                      <span>{repo.stargazers_count}</span>
                     </div>
-                  )}
-                </div>
-              </CardTitle>
-              <CardDescription className="line-clamp-2 font-mono text-xs">
-                {repo.description}
-              </CardDescription>
-            </div>
-          </CardHeader>
-          <CardContent className="p-0">
-            <div className="mt-2 flex flex-wrap gap-1">
-              {repo.language && (
-                <Badge
-                  className={cn(
-                    "px-1.5 py-0.5 text-[10px]",
-                    repo.featured &&
+                    {repo.forks_count > 0 && (
+                      <div className="flex items-center space-x-1">
+                        <GitForkIcon className="h-4 w-4" />
+                        <span>{repo.forks_count}</span>
+                      </div>
+                    )}
+                  </div>
+                </CardTitle>
+                <CardDescription className="line-clamp-2 font-mono text-xs">
+                  {repo.description}
+                </CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="mt-2 flex flex-wrap gap-1">
+                {repo.language && (
+                  <Badge
+                    className={cn(
+                      "px-1.5 py-0.5 text-[10px]",
+                      repo.featured &&
                       "bg-primary/20 text-primary hover:bg-primary/30",
-                  )}
-                >
-                  {repo.language}
-                </Badge>
-              )}
-              {repo.topics.slice(0, 4).map((topic) => (
-                <Badge
-                  className="px-1.5 py-0.5 text-[10px]"
-                  variant="secondary"
-                  key={topic}
-                >
-                  {topic}
-                </Badge>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </a>
+                    )}
+                  >
+                    {repo.language}
+                  </Badge>
+                )}
+                {repo.topics.slice(0, 4).map((topic) => (
+                  <Badge
+                    className="px-1.5 py-0.5 text-[10px]"
+                    variant="secondary"
+                    key={topic}
+                  >
+                    {topic}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </a>
+      )}
     </motion.div>
   );
 };

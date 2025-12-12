@@ -129,32 +129,10 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     "Core Areas: Web App Security, Network Security, Penetration Testing, Research & Development",
     "Soft Skills: Technical Documentation, Critical Thinking, Research & Analysis, Knowledge Sharing, Attention to Detail",
   ],
-  researchProjects: [
-    {
-      title: "Password Security Tool",
-      techStack: ["Python", "Cryptographic Libraries", "Regular Expressions"],
-      description:
-        "Developed a Python tool for advanced password strength analysis via a smart scoring algorithm (0-100 points). Implemented secure password generation with entropy calculation and simulated breach detection.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/anugrahk21/Cyber-Projects/tree/main/P1",
-      },
-    },
-    {
-      title: "AI Personal Life Coach",
-      techStack: ["Python", "Flask", "Google Gemini API", "HTML/CSS"],
-      description:
-        "Engineered a full-stack AI agent using Python, Flask, and Gemini 2.0 for real-time, context-aware guidance. Implemented advanced prompt engineering and session memory to maintain a consistent therapeutic persona with safety guardrails.",
-      link: {
-        label: "live demo",
-        href: "https://personal-ai-ally.onrender.com/",
-      },
-    },
-  ],
   open_source: [
     "https://github.com/anugrahk21/Project-Cerberus",
     "https://github.com/anugrahk21/Cyber-Projects",
-    "https://github.com/anugrahk21/Personal-AI-Ally",
+    "https://github.com/anugrahk21/Personal_AI_Life_Coach",
   ],
   projects: [
     {

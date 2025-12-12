@@ -130,8 +130,12 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
+
+          {/* Actions at the top */}
           <CommandGroup heading="Actions">
             <CommandItem
+              value="print"
+              keywords={["print", "pdf", "export"]}
               onSelect={() => {
                 setOpen(false);
                 window.print();
@@ -140,12 +144,17 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
               <span>Print</span>
             </CommandItem>
           </CommandGroup>
+
+          {/* Links second */}
           {links.length > 0 && (
             <>
+              <CommandSeparator />
               <CommandGroup heading="Links">
                 {links.map(({ url, title }) => (
                   <CommandItem
                     key={url}
+                    value={title}
+                    keywords={[title.toLowerCase()]}
                     onSelect={() => {
                       setOpen(false);
                       window.open(url, "_blank");
@@ -155,28 +164,35 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
                   </CommandItem>
                 ))}
               </CommandGroup>
-              <CommandSeparator />
             </>
           )}
+
+          <CommandSeparator />
+
+          {/* Navigation at the bottom - filter out items that are already in links */}
           <CommandGroup heading="Navigation">
-            {navItems.map((item) => (
-              <CommandItem
-                key={item.name}
-                onSelect={() => {
-                  setOpen(false);
-                  if (item.href.startsWith("#")) {
-                    scrollToSection(item.href.substring(1));
-                  } else {
-                    window.location.href = item.href;
-                  }
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  {item.icon}
-                  <span>{item.name}</span>
-                </div>
-              </CommandItem>
-            ))}
+            {navItems
+              .filter((item) => !links.some((link) => link.title.toLowerCase() === item.name.toLowerCase()))
+              .map((item) => (
+                <CommandItem
+                  key={item.name}
+                  value={item.name}
+                  keywords={[item.name.toLowerCase(), item.href.replace('#', '')]}
+                  onSelect={() => {
+                    setOpen(false);
+                    if (item.href.startsWith("#")) {
+                      scrollToSection(item.href.substring(1));
+                    } else {
+                      window.location.href = item.href;
+                    }
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    {item.icon}
+                    <span>{item.name}</span>
+                  </div>
+                </CommandItem>
+              ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

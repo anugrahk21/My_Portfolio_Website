@@ -4,9 +4,10 @@ import * as React from "react";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -24,13 +25,45 @@ const Command = React.forwardRef<
 
 Command.displayName = CommandPrimitive.displayName;
 
-interface CommandDialogProps extends DialogProps {}
+interface CommandDialogProps extends DialogProps { }
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
+  const commandRef = React.useRef<HTMLDivElement>(null);
+
+  // Handle Page Down/Up to navigate like Arrow Down/Up
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "PageDown" || e.key === "PageUp") {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const arrowKey = e.key === "PageDown" ? "ArrowDown" : "ArrowUp";
+
+      // Create and dispatch a proper keyboard event
+      if (commandRef.current) {
+        const newEvent = new KeyboardEvent("keydown", {
+          key: arrowKey,
+          code: arrowKey === "ArrowDown" ? "ArrowDown" : "ArrowUp",
+          keyCode: arrowKey === "ArrowDown" ? 40 : 38,
+          which: arrowKey === "ArrowDown" ? 40 : 38,
+          bubbles: true,
+          cancelable: true,
+        });
+        commandRef.current.dispatchEvent(newEvent);
+      }
+    }
+  };
+
   return (
     <Dialog {...props}>
-      <DialogContent className="overflow-hidden p-0 shadow-lg">
-        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+      <DialogContent className="overflow-hidden p-0 shadow-lg" onKeyDown={handleKeyDown}>
+        <VisuallyHidden.Root>
+          <DialogTitle>Command Menu</DialogTitle>
+        </VisuallyHidden.Root>
+        <Command
+          ref={commandRef}
+          loop
+          className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
+        >
           {children}
         </Command>
       </DialogContent>
@@ -118,7 +151,10 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none transition-all",
+      "aria-selected:bg-accent aria-selected:text-accent-foreground aria-selected:border-2 aria-selected:border-primary aria-selected:shadow-sm aria-selected:scale-[1.02]",
+      "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "hover:bg-accent/50",
       className,
     )}
     {...props}

@@ -10,15 +10,15 @@ export const dynamic = "force-static";
 export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = RESUME_DATA.personalWebsiteUrl; // Get base URL
   return {
-    title: "Blog | Adithya S Kolavi",
+    title: `Blog | ${RESUME_DATA.name}`,
     description:
-      "Read articles and insights on AI, technology, and research by Adithya S Kolavi.",
-    keywords: ["blog", "AI", "technology", "research", "Adithya S Kolavi"],
+      `Read articles and insights on AI, cybersecurity, and technology by ${RESUME_DATA.name}.`,
+    keywords: ["blog", "AI", "cybersecurity", "technology", "research", RESUME_DATA.name],
     openGraph: {
-      title: "Blog | Adithya S Kolavi",
-      description: "Articles and insights on AI, technology, and research.",
+      title: `Blog | ${RESUME_DATA.name}`,
+      description: "Articles and insights on AI, cybersecurity, and technology.",
       url: `${siteUrl}/blog`,
-      siteName: "Adithya S Kolavi's Blog",
+      siteName: `${RESUME_DATA.name}'s Blog`,
       images: [
         {
           url: `${siteUrl}/og-image.png`, // Use a default OG image
@@ -31,8 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Blog | Adithya S Kolavi",
-      description: "Articles and insights on AI, technology, and research.",
+      title: `Blog | ${RESUME_DATA.name}`,
+      description: "Articles and insights on AI, cybersecurity, and technology.",
       // creator: "@your_twitter_handle",
       images: [`${siteUrl}/og-image.png`],
     },

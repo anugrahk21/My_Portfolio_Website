@@ -40,9 +40,12 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
     // Try to load markdown content from Blog_Data directory
     try {
       const blogDataPath = path.join(process.cwd(), 'src', 'data', 'Blog_Data', `${slug}.md`);
+      console.log(`[Blog] Attempting to load: ${blogDataPath}`);
+      console.log(`[Blog] File exists: ${fs.existsSync(blogDataPath)}`);
 
       if (fs.existsSync(blogDataPath)) {
         const fileContent = fs.readFileSync(blogDataPath, 'utf-8');
+        console.log(`[Blog] Successfully loaded ${slug}, content length: ${fileContent.length}`);
 
         // Return the post with the loaded content
         return {

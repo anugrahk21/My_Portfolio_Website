@@ -45,9 +45,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug);
+  const { slug } = await params; // Await params in Next.js 16
+  const post = getBlogPostBySlug(slug);
   const siteUrl = RESUME_DATA.personalWebsiteUrl;
 
   if (!post || !post.published) {
@@ -62,16 +63,16 @@ export async function generateMetadata({
   const ogImageUrl = post.ogImage || `${siteUrl}/og-image.png`; // Use post-specific OG image or default
 
   return {
-    title: `${post.title} | Adithya S Kolavi Blog`,
-    description: post.excerpt || "Read this blog post by Adithya S Kolavi.",
+    title: `${post.title} | ${RESUME_DATA.name} Blog`,
+    description: post.excerpt || `Read this blog post by ${RESUME_DATA.name}.`,
     keywords: post.tags
-      ? [...post.tags, "blog", "Adithya S Kolavi"]
-      : ["blog", "Adithya S Kolavi"],
+      ? [...post.tags, "blog", RESUME_DATA.name]
+      : ["blog", RESUME_DATA.name],
     openGraph: {
       title: post.title,
       description: post.excerpt || "",
       url: postUrl,
-      siteName: "Adithya S Kolavi's Blog",
+      siteName: `${RESUME_DATA.name}'s Blog`,
       images: [
         {
           url: ogImageUrl,
@@ -101,9 +102,10 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = getBlogPostBySlug(params.slug);
+  const { slug } = await params; // Await params in Next.js 16
+  const post = getBlogPostBySlug(slug);
 
   if (!post || !post.published) {
     notFound();
@@ -290,7 +292,7 @@ export default async function BlogPostPage({
             ),
             img: ({ src, alt, ...props }) => (
               <div className="my-6">
-                {src && (
+                {src && typeof src === 'string' && (
                   <Image
                     src={src}
                     alt={alt || "Blog post image"}
