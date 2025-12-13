@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     },
     description: RESUME_DATA.summary,
     // site: "@your_twitter_handle", // Add site handle if available
-    creator: "@adithya_s_k", // Already present, keep it
-    images: ["/website_ss.png"], // Updated to use website_ss.png
+    creator: RESUME_DATA.name, // Updated from hardcoded handle
+    images: ["/website_ss.png"], // Updated to yuse website_ss.png
   },
   alternates: {
     canonical: RESUME_DATA.personalWebsiteUrl,

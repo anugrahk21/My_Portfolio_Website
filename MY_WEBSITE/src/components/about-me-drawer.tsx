@@ -87,7 +87,7 @@ export const AboutMeDrawer = () => {
       <DrawerContent className="max-h-[90vh]">
         <div className="mx-auto w-full max-w-4xl">
           {/* <DrawerHeader>
-            <DrawerTitle>About Adithya S Kolavi</DrawerTitle>
+            <DrawerTitle>About {RESUME_DATA.name}</DrawerTitle>
             <DrawerDescription>A comprehensive overview of my background and interests</DrawerDescription>
           </DrawerHeader> */}
           <div

@@ -91,7 +91,7 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className="rounded-full border border-gray-200 bg-white/70 shadow-lg backdrop-blur-md dark:border-gray-800 dark:bg-slate-900/80"
+        className="rounded-full border border-gray-200 bg-white/70 shadow-lg backdrop-blur-md dark:border-border dark:bg-card/80"
       >
         <nav className="flex items-center space-x-1 px-4 py-2 md:space-x-2 md:py-2.5">
           {navItems.map((item) => (
@@ -99,7 +99,7 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
               key={item.name}
               variant="ghost"
               size="sm"
-              className="flex flex-col items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium transition-all hover:bg-gray-100 dark:hover:bg-slate-800 md:flex-row md:gap-2 md:px-3 md:py-2 md:text-sm"
+              className="flex flex-col items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium transition-all hover:bg-gray-100 dark:hover:bg-muted md:flex-row md:gap-2 md:px-3 md:py-2 md:text-sm"
               asChild
             >
               <a
@@ -117,7 +117,7 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
             onClick={() => setOpen(true)}
             variant="ghost"
             size="sm"
-            className="flex flex-col items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium transition-all hover:bg-gray-100 dark:hover:bg-slate-800 md:flex-row md:gap-2 md:px-3 md:py-2 md:text-sm"
+            className="flex flex-col items-center gap-1 rounded-full px-2 py-1.5 text-xs font-medium transition-all hover:bg-gray-100 dark:hover:bg-muted md:flex-row md:gap-2 md:px-3 md:py-2 md:text-sm"
           >
             <CommandIcon className="h-5 w-5" />
             <span className="hidden xs:inline md:inline">Menu</span>

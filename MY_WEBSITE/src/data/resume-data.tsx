@@ -155,6 +155,16 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
         href: "https://personal-ai-ally.onrender.com/",
       },
     },
+    {
+      title: "Retrieval-Augmented Generation (RAG)",
+      techStack: ["Python", "Streamlit", "Google Gemini API", "RAG", "Document Processing"],
+      description:
+        "A powerful Streamlit application that demonstrates Retrieval-Augmented Generation (RAG) using Google's Gemini AI. Upload your documents and ask questions - the AI will answer based solely on the document content!",
+      link: {
+        label: "github.com",
+        href: "https://github.com/anugrahk21/Retrieval-Augmented-Generation-RAG",
+      },
+    },
   ],
   extraCurricular: [
     {

@@ -12,6 +12,10 @@ import {
   PhoneIcon,
   ArrowRight,
   FileDown,
+  ShieldCheckIcon,
+  FileTextIcon,
+  AwardIcon,
+  GraduationCapIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
@@ -28,12 +32,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { BlogPost, BlogCard } from "@/components/blog-card";
 import { InteractiveSkills } from "@/components/interactive-skills";
-import { WorkTimeline } from "@/components/work-timeline";
+import { IconTimeline } from "@/components/icon-timeline";
 import { HyperText } from "@/components/magicui/hyper-text";
 import { AboutMeMorph } from "@/components/about-me-morph";
 // import { AboutMeDrawer } from "@/components/about-me-drawer";
 import { GitHubStars } from "@/components/github-stars";
 import { Metadata } from "next";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Name animation overlay component
 const NameAnimation = () => {
@@ -67,7 +72,7 @@ const NameAnimation = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }} // Faster fade in/out
-          className="fixed inset-0 z-50 flex items-center justify-center bg-white"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
         >
           <div className="relative">
             <motion.div
@@ -93,7 +98,7 @@ const NameAnimation = () => {
                   transition={{ delay: 0.1 * index, duration: 0.5 }} // Faster animation with shorter delay
                   className="overflow-hidden"
                 >
-                  <HyperText className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-4xl font-bold text-transparent sm:text-6xl lg:text-9xl">
+                  <HyperText className="text-4xl font-bold text-black sm:text-6xl lg:text-9xl">
                     {word}
                   </HyperText>
                 </motion.div>
@@ -107,7 +112,7 @@ const NameAnimation = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }} // Faster appearance of about text
             >
-              <HyperText className="text-sm tracking-wide text-gray-600">
+              <HyperText className="text-sm tracking-wide text-black">
                 {RESUME_DATA.about}
               </HyperText>
             </motion.div>
@@ -270,7 +275,7 @@ export default function Page() {
   };
 
   return (
-    <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
+    <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 pb-24 md:p-16 md:pb-24 print:p-12">
       {/* Content is always rendered and visible to crawlers/SEO */}
       <motion.div
         initial={{ opacity: 1 }} // Start visible for SSR/crawlers
@@ -285,7 +290,7 @@ export default function Page() {
         <HoverNavbar links={commandLinks} />
         <motion.section
           id="top"
-          className="mx-auto w-full max-w-4xl space-y-8 bg-white print:space-y-6"
+          className="mx-auto w-full max-w-4xl space-y-8 bg-background print:space-y-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -341,6 +346,7 @@ export default function Page() {
                     <span>CV</span>
                   </a>
                 </Button>
+                <ThemeToggle />
               </div>
               <div className="hidden flex-col gap-x-1 font-mono text-sm text-muted-foreground print:flex">
                 {RESUME_DATA.contact.email ? (
@@ -379,7 +385,11 @@ export default function Page() {
 
           <Section id="work" className="scroll-mt-16">
             <h2 className="text-xl font-bold">Certifications and Trainings</h2>
-            <WorkTimeline experiences={RESUME_DATA.work} />
+            <IconTimeline
+              items={RESUME_DATA.work}
+              defaultIcon={<ShieldCheckIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
+              showMoreText="Show more certifications"
+            />
           </Section>
 
           {/* Featured Repositories */}
@@ -391,18 +401,40 @@ export default function Page() {
 
           {/* Published Work Section */}
           {RESUME_DATA.publications && RESUME_DATA.publications.length > 0 && (
-            <div className="scroll-mt-16" id="publications">
-              <PublishedWorkSection publications={RESUME_DATA.publications} />
-            </div>
+            <Section id="publications" className="scroll-mt-16">
+              <h2 className="text-xl font-bold">Academic Publications</h2>
+              <IconTimeline
+                items={RESUME_DATA.publications.map(pub => ({
+                  company: pub.publisher.split("|")[0].trim(),
+                  title: pub.title,
+                  description: pub.description,
+                  start: pub.date,
+                  link: pub.websiteUrl || "#",
+                  badges: Array.from(pub.tags),
+                }))}
+                defaultIcon={<FileTextIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
+                showMoreText="Show more publications"
+              />
+            </Section>
           )}
 
           {/* Achievements & News Section */}
           {RESUME_DATA.achievements && RESUME_DATA.achievements.length > 0 && (
-            <div className="scroll-mt-16" id="achievements-news">
-              <AchievementsNewsSection
-                achievements={RESUME_DATA.achievements}
+            <Section id="achievements" className="scroll-mt-16">
+              <h2 className="text-xl font-bold">Achievements & Highlights</h2>
+              <IconTimeline
+                items={RESUME_DATA.achievements.map(achievement => ({
+                  company: achievement.title,
+                  title: achievement.date,
+                  description: achievement.description,
+                  start: achievement.date,
+                  link: (achievement as any).link ? (achievement as any).link.href : "#",
+                  badges: Array.from(achievement.tags),
+                }))}
+                defaultIcon={<AwardIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
+                showMoreText="Show more achievements"
               />
-            </div>
+            </Section>
           )}
 
           {/* Open Source Section */}
@@ -493,26 +525,19 @@ export default function Page() {
 
           <Section id="education" className="scroll-mt-16">
             <h2 className="text-xl font-bold">Education</h2>
-            <div className="mt-4 space-y-4">
-              {RESUME_DATA.education.map((education) => (
-                <Card
-                  key={education.school}
-                  className="overflow-hidden border border-muted p-4 transition-all hover:shadow-sm"
-                >
-                  <CardHeader>
-                    <div className="flex items-center justify-between gap-x-2 text-base">
-                      <h3 className="font-semibold leading-none">
-                        {education.school}
-                      </h3>
-                      <div className="text-sm tabular-nums text-gray-500">
-                        {education.start} - {education.end}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="mt-2">{education.degree}</CardContent>
-                </Card>
-              ))}
-            </div>
+            <IconTimeline
+              items={RESUME_DATA.education.map(edu => ({
+                company: edu.school,
+                title: edu.degree,
+                description: `${edu.degree} (${edu.start} - ${edu.end})`,
+                start: edu.start,
+                end: edu.end,
+                link: "#",
+                badges: [],
+              }))}
+              defaultIcon={<GraduationCapIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
+              maxInitialItems={10}
+            />
           </Section>
         </motion.section>
       </motion.div>

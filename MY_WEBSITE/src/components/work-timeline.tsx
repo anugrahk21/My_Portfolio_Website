@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
 import {
+  ShieldCheckIcon,
   BriefcaseIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -79,7 +80,7 @@ const WorkTimelineItem: React.FC<WorkTimelineItemProps> = ({
               className="object-cover p-1"
             />
           ) : (
-            <BriefcaseIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />
+            <ShieldCheckIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />
           )}
         </div>
 

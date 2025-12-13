@@ -80,28 +80,28 @@ const TweetPreview: React.FC<{
   content = "Loading tweet content...",
   date = "Just now",
 }) => {
-  return (
-    <div className="mx-auto max-w-[500px] rounded-lg border bg-white p-4 shadow-sm dark:bg-gray-900">
-      <div className="mb-2 flex items-center">
-        <div className="mr-3 h-10 w-10 rounded-full bg-muted"></div>
-        <div>
-          <div className="text-sm font-bold">{username}</div>
-          <div className="text-xs text-muted-foreground">
-            @{username.toLowerCase().replace(/\s/g, "")}
+    return (
+      <div className="mx-auto max-w-[500px] rounded-lg border bg-white p-4 shadow-sm dark:bg-gray-900">
+        <div className="mb-2 flex items-center">
+          <div className="mr-3 h-10 w-10 rounded-full bg-muted"></div>
+          <div>
+            <div className="text-sm font-bold">{username}</div>
+            <div className="text-xs text-muted-foreground">
+              @{username.toLowerCase().replace(/\s/g, "")}
+            </div>
           </div>
         </div>
+        <div className="my-2 text-sm">{content}</div>
+        <div className="mt-2 text-xs text-muted-foreground">{date}</div>
+        <div className="mt-4 flex justify-between">
+          <div className="text-xs text-muted-foreground">💬</div>
+          <div className="text-xs text-muted-foreground">🔄</div>
+          <div className="text-xs text-muted-foreground">❤️</div>
+          <div className="text-xs text-muted-foreground">📤</div>
+        </div>
       </div>
-      <div className="my-2 text-sm">{content}</div>
-      <div className="mt-2 text-xs text-muted-foreground">{date}</div>
-      <div className="mt-4 flex justify-between">
-        <div className="text-xs text-muted-foreground">💬</div>
-        <div className="text-xs text-muted-foreground">🔄</div>
-        <div className="text-xs text-muted-foreground">❤️</div>
-        <div className="text-xs text-muted-foreground">📤</div>
-      </div>
-    </div>
-  );
-};
+    );
+  };
 
 // LinkedIn embed setup
 const loadLinkedInScript = () => {
