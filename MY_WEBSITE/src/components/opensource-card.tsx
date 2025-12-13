@@ -82,7 +82,7 @@ export const OpenSourceSection: React.FC<OpenSourceSectionProps> = ({
 }) => {
   // Filter out any repositories that might be null or undefined
   const validRepos = repositories.filter(Boolean);
-  
+
   return (
     <Section className="mb-8">
       <h2 className="mb-2 text-2xl font-bold">Open Source</h2>

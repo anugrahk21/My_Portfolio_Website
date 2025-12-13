@@ -69,6 +69,7 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ delay: index * 0.1 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
         >
             {/* Timeline line */}
             {!isLast && (
@@ -213,7 +214,7 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
                             </div>
                         </Link>
                     ) : (
-                        <div className="rounded-lg border border-muted bg-card p-4 shadow-sm transition-all duration-300 hover:bg-card/95 hover:shadow group-hover:border-muted/80">
+                        <div className="rounded-lg border border-muted bg-card p-4 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md">
                             <div className="mb-1 flex flex-col justify-between gap-2 md:flex-row md:items-center">
                                 <h3 className="text-base font-semibold">
                                     <Link

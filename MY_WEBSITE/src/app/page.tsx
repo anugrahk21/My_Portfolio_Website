@@ -24,7 +24,7 @@ import {
   OpenSourceCard,
   OpenSourceSection,
 } from "@/components/opensource-card";
-import { FeaturedRepos } from "@/components/featured-repo";
+import { FeaturedRepos, Repository } from "@/components/featured-repo";
 import { PublishedWorkSection } from "@/components/published-work";
 import { AchievementsNewsSection } from "@/components/achievements-news";
 import { HoverNavbar } from "@/components/hover-navbar";
@@ -38,7 +38,7 @@ import { AboutMeMorph } from "@/components/about-me-morph";
 // import { AboutMeDrawer } from "@/components/about-me-drawer";
 import { GitHubStars } from "@/components/github-stars";
 import { Metadata } from "next";
-import { ThemeToggle } from "@/components/theme-toggle";
+
 
 // Name animation overlay component
 const NameAnimation = () => {
@@ -123,25 +123,12 @@ const NameAnimation = () => {
   );
 };
 
-// Type definition for GitHub repository data
-interface Repository {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  topics: string[];
-  language: string | null;
-  owner?: {
-    login: string;
-    avatar_url: string;
-  };
-}
+
 
 export default function Page() {
-  const [repoData, setRepoData] = useState<Repository[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [repoData, setRepoData] = useState<Repository[]>(
+    (RESUME_DATA.open_source as unknown) as Repository[]
+  );
   const [animationComplete, setAnimationComplete] = useState(false);
 
   // Command menu links
@@ -166,98 +153,54 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        // Cache version - increment this when you change repositories
-        const CACHE_VERSION = "v2";
+    const fetchFreshRepoData = async () => {
+      const initialData = (RESUME_DATA.open_source as unknown) as Repository[];
+      const updatedData = [...initialData];
+      let hasUpdates = false;
 
-        // Check if we have cached data and it's still valid (less than 3 hours old)
-        const cachedData = localStorage.getItem("githubRepoData");
-        const cachedTimestamp = localStorage.getItem("githubRepoTimestamp");
-        const cachedVersion = localStorage.getItem("githubCacheVersion");
-        const currentTime = new Date().getTime();
-
-        // If we have valid cached data (less than 3 hours old) AND same version
-        if (
-          cachedData &&
-          cachedTimestamp &&
-          cachedVersion === CACHE_VERSION &&
-          currentTime - parseInt(cachedTimestamp) < 3 * 60 * 60 * 1000
-        ) {
-          console.log("Using cached GitHub repository data");
-          setRepoData(JSON.parse(cachedData));
-          setLoading(false);
-          return;
-        }
-
-        // No valid cache, fetch from GitHub API with rate limiting
-        console.log("Fetching fresh GitHub repository data with rate limiting");
-
-        // Create a sequential, rate-limited fetch process
-        const results = [];
-        for (const repoUrl of RESUME_DATA.open_source) {
+      // Use Promise.all to fetch in parallel (with respect to JS event loop)
+      // but individual failures won't stop others
+      await Promise.all(
+        initialData.map(async (repo, index) => {
           try {
-            // Add a delay between requests (500ms)
-            if (results.length > 0) {
-              await new Promise((resolve) => setTimeout(resolve, 500));
-            }
-
-            const apiUrl = repoUrl.replace(
+            const apiUrl = repo.html_url.replace(
               "https://github.com",
-              "https://api.github.com/repos",
+              "https://api.github.com/repos"
             );
 
-            console.log(`Fetching data for: ${repoUrl}`);
             const response = await fetch(apiUrl, {
               headers: {
                 Accept: "application/vnd.github.v3+json",
               },
             });
 
-            if (!response.ok) {
-              console.error(
-                `Failed to fetch repo data for ${repoUrl}: ${response.status}`,
-              );
-              continue;
+            if (response.ok) {
+              const freshData = await response.json();
+              // Update with fresh data but preserve the local highlight preference
+              updatedData[index] = {
+                ...repo, // Keep local topics and description
+                stargazers_count: freshData.stargazers_count,
+                forks_count: freshData.forks_count,
+                language: freshData.language || repo.language, // Use API language, fallback to local
+              };
+              hasUpdates = true;
             }
-
-            const data = await response.json();
-            results.push(data);
           } catch (error) {
-            console.error(`Error fetching repo data for ${repoUrl}:`, error);
+            console.error(`Failed to fetch fresh data for ${repo.name}`, error);
+            // On error, we just keep the static data (fallback)
           }
-        }
+        })
+      );
 
-        // Save the fetched data to localStorage with current timestamp and version
-        if (results.length > 0) {
-          localStorage.setItem("githubRepoData", JSON.stringify(results));
-          localStorage.setItem("githubRepoTimestamp", currentTime.toString());
-          localStorage.setItem("githubCacheVersion", "v2");
-          setRepoData(results);
-        } else if (cachedData) {
-          // If all new requests failed but we have old cached data, use that
-          console.log("Using expired cache due to fetch failures");
-          setRepoData(JSON.parse(cachedData));
-        }
-      } catch (error) {
-        console.error("Error fetching repository data:", error);
-        // Try to load from cache even if it's expired in case of error
-        try {
-          const cachedData = localStorage.getItem("githubRepoData");
-          if (cachedData) {
-            console.log("Using expired cache due to fetch error");
-            setRepoData(JSON.parse(cachedData));
-          }
-        } catch (cacheError) {
-          console.error("Error loading from cache:", cacheError);
-        }
-      } finally {
-        setLoading(false);
+      if (hasUpdates) {
+        setRepoData(updatedData);
       }
     };
 
-    fetchRepos();
+    fetchFreshRepoData();
   }, []);
+
+
 
   const container = {
     hidden: { opacity: 0 },
@@ -346,7 +289,7 @@ export default function Page() {
                     <span>CV</span>
                   </a>
                 </Button>
-                <ThemeToggle />
+
               </div>
               <div className="hidden flex-col gap-x-1 font-mono text-sm text-muted-foreground print:flex">
                 {RESUME_DATA.contact.email ? (
@@ -396,7 +339,7 @@ export default function Page() {
           <FeaturedRepos
             repositories={repoData}
             title="Featured Open Source Work"
-            loading={loading}
+            loading={false}
           />
 
           {/* Published Work Section */}
@@ -511,6 +454,7 @@ export default function Page() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <ProjectCard
                     title={project.title}

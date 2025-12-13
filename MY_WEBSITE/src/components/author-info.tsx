@@ -22,19 +22,19 @@ export function AuthorInfo() {
               <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
             </Avatar>
           </motion.div>
-          
+
           <div>
             <h3 className="text-lg font-semibold">{RESUME_DATA.name}</h3>
             <p className="text-sm text-muted-foreground">{RESUME_DATA.about}</p>
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="p-6 pt-0">
         <p className="text-sm text-muted-foreground mb-4">
           {RESUME_DATA.summary}
         </p>
-        
+
         <div className="flex flex-wrap gap-2">
           {RESUME_DATA.contact.email ? (
             <Button

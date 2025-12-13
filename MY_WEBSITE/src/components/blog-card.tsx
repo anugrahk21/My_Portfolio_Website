@@ -13,6 +13,7 @@ import { Badge } from "./ui/badge";
 import { CalendarIcon, Clock, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export interface BlogPost {
   slug: string;
@@ -124,12 +125,24 @@ export const BlogGrid = ({ posts, featuredCount = 1 }: BlogGridProps) => {
   const regularPosts = sortedPosts.slice(featuredCount);
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4">
       {featuredPosts.map((post) => (
-        <BlogCard key={post.slug} post={post} variant="featured" />
+        <motion.div
+          key={post.slug}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          className="h-full md:col-span-2 lg:col-span-2"
+        >
+          <BlogCard post={post} variant="featured" />
+        </motion.div>
       ))}
       {regularPosts.map((post) => (
-        <BlogCard key={post.slug} post={post} />
+        <motion.div
+          key={post.slug}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+          className="h-full"
+        >
+          <BlogCard post={post} />
+        </motion.div>
       ))}
     </div>
   );

@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { BlogNavbar } from "@/components/blog-navbar";
+import { HoverNavbar } from "@/components/hover-navbar";
 import { Badge } from "./ui/badge";
-import { CalendarIcon, Clock, ArrowLeft } from "lucide-react";
+import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
@@ -35,7 +35,13 @@ export function BlogPostUI({
   return (
     <div className="container mx-auto mb-16 mt-12 max-w-4xl px-4 pb-24">
       <div className="mb-12">
-        <BlogNavbar />
+        <HoverNavbar
+          navItems={[
+            { name: "Back", icon: <ArrowLeftIcon className="h-5 w-5" />, href: "/blog" },
+            { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "/" },
+            { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
+          ]}
+        />
       </div>
 
       <article>

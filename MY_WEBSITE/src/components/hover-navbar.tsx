@@ -23,12 +23,20 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { ThemeToggle } from "./theme-toggle";
+
+interface NavItem {
+  name: string;
+  icon: React.ReactNode;
+  href: string;
+}
 
 interface NavbarProps {
   links?: { url: string; title: string }[];
+  navItems?: NavItem[];
 }
 
-export function HoverNavbar({ links = [] }: NavbarProps) {
+export function HoverNavbar({ links = [], navItems: customNavItems }: NavbarProps) {
   const [open, setOpen] = useState(false);
 
   // Command menu keyboard shortcut
@@ -44,30 +52,32 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const navItems = [
-    { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "#top" },
+  const defaultNavItems = [
+    { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "/#top" },
     {
       name: "About",
       icon: <FileTextIcon className="h-5 w-5" />,
-      href: "#about",
+      href: "/#about",
     },
     {
       name: "Certifications",
       icon: <BriefcaseIcon className="h-5 w-5" />,
-      href: "#work",
+      href: "/#work",
     },
-    { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "#blog" },
+    { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
     {
       name: "Projects",
       icon: <CodeIcon className="h-5 w-5" />,
-      href: "#projects",
+      href: "/#projects",
     },
     {
       name: "Education",
       icon: <GraduationCapIcon className="h-5 w-5" />,
-      href: "#education",
+      href: "/#education",
     },
   ];
+
+  const navItems = customNavItems || defaultNavItems;
 
   // Handle navigation and smooth scrolling
   const handleNavigation = (
@@ -122,6 +132,10 @@ export function HoverNavbar({ links = [] }: NavbarProps) {
             <CommandIcon className="h-5 w-5" />
             <span className="hidden xs:inline md:inline">Menu</span>
           </Button>
+
+          <div className="ml-1 md:ml-2">
+            <ThemeToggle />
+          </div>
         </nav>
       </motion.div>
 

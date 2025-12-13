@@ -19,7 +19,7 @@ import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatedGradientBorder } from "./magicui/gradient-border";
 
-interface Repository {
+export interface Repository {
   id: number;
   name: string;
   html_url: string;
@@ -29,6 +29,7 @@ interface Repository {
   topics: readonly string[] | string[];
   language: string | null;
   featured?: boolean;
+  highlight?: boolean;
   owner?: {
     login: string;
     avatar_url: string;
@@ -41,8 +42,8 @@ interface FeaturedRepoProps {
 }
 
 export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
-  // Check if this is Project-Cerberus to add gradient border
-  const isCerberus = repo.name.toLowerCase().includes("cerberus");
+  // Check if this repo should be highlighted (gradient border)
+  const isHighlighted = repo.highlight || repo.name.toLowerCase().includes("cerberus");
 
   const cardContent = (
     <Card className="group h-full overflow-hidden border-0 p-3 transition-all duration-300">
@@ -104,7 +105,7 @@ export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
     >
-      {isCerberus ? (
+      {isHighlighted ? (
         <AnimatedGradientBorder
           containerClassName="h-full"
           href={repo.html_url}
@@ -114,7 +115,7 @@ export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
         </AnimatedGradientBorder>
       ) : (
         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-          <Card className="group h-full overflow-hidden border border-muted p-3 transition-all duration-300 hover:border-primary/50 hover:shadow-md">
+          <Card className="group h-full overflow-hidden border border-muted p-3 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
             <CardHeader className="p-0 pb-3">
               <div className="space-y-1">
                 <CardTitle className="flex items-center justify-between text-base">
