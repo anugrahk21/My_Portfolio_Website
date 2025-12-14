@@ -18,6 +18,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatedGradientBorder } from "./magicui/gradient-border";
+import { DecryptText } from "./decrypt-text";
 
 export interface Repository {
   id: number;
@@ -30,6 +31,7 @@ export interface Repository {
   language: string | null;
   featured?: boolean;
   highlight?: boolean;
+  dataSource?: 'api' | 'static';
   owner?: {
     login: string;
     avatar_url: string;
@@ -43,7 +45,7 @@ interface FeaturedRepoProps {
 
 export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
   // Check if this repo should be highlighted (gradient border)
-  const isHighlighted = repo.highlight || repo.name.toLowerCase().includes("cerberus");
+  const isHighlighted = repo.highlight || repo.name?.toLowerCase().includes("cerberus");
 
   const cardContent = (
     <Card className="group h-full overflow-hidden border-0 p-3 transition-all duration-300">
@@ -242,7 +244,9 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = ({
   return (
     <section className="mb-8">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-xl font-bold">
+          <DecryptText text={title} />
+        </h2>
         {!loading && repositories.length > 0 && (
           <div className="flex items-center gap-1 rounded-full bg-secondary/80 px-3 py-1 text-sm">
             <StarIcon className="h-4 w-4 fill-yellow-500 text-yellow-500" />
@@ -259,7 +263,7 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = ({
           ) : (
             visibleRepos.map((repo, index) => (
               <FeaturedRepo
-                key={repo.id}
+                key={repo.html_url}
                 repo={{ ...repo, featured: true }}
                 index={index}
               />

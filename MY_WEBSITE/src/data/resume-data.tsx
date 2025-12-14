@@ -11,7 +11,7 @@ export const RESUME_DATA = {
   // avatarUrl: "https://anugrah.com/anugrah.jpg",
   avatarUrl: "/anugrah.jpeg",
   personalWebsiteUrl: "https://github.com/anugrahk21",
-  resumeUrl: "/Anugrah_K_Resume.pdf",
+  resumeUrl: "/Anugrah_Main_CV.pdf",
   extendedBio: `
   
 ## My Journey in Cybersecurity and AI
@@ -131,35 +131,17 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   open_source: [
     {
-      id: 1,
-      name: "Project-Cerberus",
       html_url: "https://github.com/anugrahk21/Project-Cerberus",
-      description: "A production-grade, multi-agent security reverse proxy that acts as an 'Iron Dome' for AI models. Detects and blocks prompt injections in real-time.",
-      stargazers_count: 5,
-      forks_count: 2,
       topics: ["ai-security", "multi-agent", "cybersecurity", "llm-safety"],
-      language: "Python",
       highlight: true,
     },
     {
-      id: 2,
-      name: "Cyber-Projects",
       html_url: "https://github.com/anugrahk21/Cyber-Projects",
-      description: "A collection of cybersecurity tools including a Password Security Tool with entropy calculation and breach simulation.",
-      stargazers_count: 3,
-      forks_count: 0,
       topics: ["cybersecurity", "python", "password-security", "cryptography"],
-      language: "Python",
     },
     {
-      id: 3,
-      name: "Personal_AI_Life_Coach",
       html_url: "https://github.com/anugrahk21/Personal_AI_Life_Coach",
-      description: "Full-stack AI agent providing real-time, context-aware guidance using Gemini 2.0 with session memory and safety guardrails.",
-      stargazers_count: 4,
-      forks_count: 1,
       topics: ["ai-agent", "flask", "gemini-api", "mental-health"],
-      language: "Python",
     },
   ],
   projects: [
@@ -279,18 +261,18 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     {
       slug: "project-cerberus-ai-iron-dome",
       title: "Project Cerberus: The AI Iron Dome",
-      date: "December 3, 2024",
+      date: "December 2025",
       excerpt: "A production-grade, multi-agent security reverse proxy that acts as an 'Iron Dome' for AI models. Built with weighted voting, canary tokens, and context-aware memory to detect and block prompt injection attacks in real-time.",
       tags: ["AI Security", "Multi-Agent Systems", "Cybersecurity", "LLM Safety", "Google AI"],
       readingTime: "8 min read",
       published: true,
     },
     {
-      slug: "multi-agent-image-editing",
-      title: "Cursor for Image Editing: A Multi-Agent Approach",
+      slug: "retrieval-augmented-generation-rag",
+      title: "Retrieval-Augmented Generation (RAG)",
       date: "January 2025",
-      excerpt: "Novel multi-agent system for visual content creation combining LLMs and VLMs for iterative refinement. Presented at Multi-Agent Workshops at AAAI 2025, this work redefines how we generate brand-consistent posters, banners, and flyers.",
-      tags: ["Multi-Agent Systems", "Computer Vision", "AI Research", "AAAI 2025", "Image Generation"],
+      excerpt: "A powerful Streamlit application that demonstrates Retrieval-Augmented Generation (RAG) using Google's Gemini AI. Upload your documents and ask questions - the AI will answer based solely on the document content!",
+      tags: ["Python", "Streamlit", "Google Gemini API", "RAG", "Document Processing"],
       readingTime: "5 min read",
       published: true,
     },

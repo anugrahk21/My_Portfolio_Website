@@ -38,90 +38,11 @@ import { AboutMeMorph } from "@/components/about-me-morph";
 // import { AboutMeDrawer } from "@/components/about-me-drawer";
 import { GitHubStars } from "@/components/github-stars";
 import { Metadata } from "next";
+import { DecryptText } from "@/components/decrypt-text";
+import { NameAnimationOverlay } from "@/components/magicui/hyper-text";
 
 
-// Name animation overlay component
-const NameAnimation = () => {
-  const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    // Prevent page scrolling during animation
-    if (visible) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 2200); // Animation stays for 2.2 seconds (faster than before)
-
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "";
-    };
-  }, [visible]);
-
-  const nameWords = RESUME_DATA.name.split(" ");
-
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }} // Faster fade in/out
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background"
-        >
-          <div className="relative">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.05 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }} // Faster background animation
-              className="absolute inset-0 -z-10"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px)",
-                backgroundSize: "50px 50px",
-              }}
-            />
-
-            {/* Name with HyperText animation */}
-            <div className="relative flex flex-wrap justify-center gap-x-4 text-center text-4xl font-bold sm:text-6xl lg:text-9xl">
-              {nameWords.map((word, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 * index, duration: 0.5 }} // Faster animation with shorter delay
-                  className="overflow-hidden"
-                >
-                  <HyperText className="text-4xl font-bold text-black sm:text-6xl lg:text-9xl">
-                    {word}
-                  </HyperText>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* About text with HyperText */}
-            <motion.div
-              className="text-center md:mt-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }} // Faster appearance of about text
-            >
-              <HyperText className="text-sm tracking-wide text-black">
-                {RESUME_DATA.about}
-              </HyperText>
-            </motion.div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
 
 
 
@@ -155,13 +76,9 @@ export default function Page() {
   useEffect(() => {
     const fetchFreshRepoData = async () => {
       const initialData = (RESUME_DATA.open_source as unknown) as Repository[];
-      const updatedData = [...initialData];
-      let hasUpdates = false;
 
-      // Use Promise.all to fetch in parallel (with respect to JS event loop)
-      // but individual failures won't stop others
-      await Promise.all(
-        initialData.map(async (repo, index) => {
+      const updatedData = await Promise.all(
+        initialData.map(async (repo) => {
           try {
             const apiUrl = repo.html_url.replace(
               "https://github.com",
@@ -171,34 +88,35 @@ export default function Page() {
             const response = await fetch(apiUrl, {
               headers: {
                 Accept: "application/vnd.github.v3+json",
+                ...(process.env.NEXT_PUBLIC_GITHUB_TOKEN && {
+                  Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+                }),
               },
             });
 
             if (response.ok) {
               const freshData = await response.json();
-              // Update with fresh data but preserve the local highlight preference
-              updatedData[index] = {
-                ...repo, // Keep local topics and description
+              return {
+                ...repo, // Keep topics and highlight from resume-data
                 stargazers_count: freshData.stargazers_count,
                 forks_count: freshData.forks_count,
-                language: freshData.language || repo.language, // Use API language, fallback to local
+                language: freshData.language || repo.language,
+                description: freshData.description || repo.description,
               };
-              hasUpdates = true;
             }
           } catch (error) {
-            console.error(`Failed to fetch fresh data for ${repo.name}`, error);
-            // On error, we just keep the static data (fallback)
+            // Silently fall back to static data
           }
+          return repo;
         })
       );
 
-      if (hasUpdates) {
-        setRepoData(updatedData);
-      }
+      setRepoData(updatedData);
     };
 
     fetchFreshRepoData();
   }, []);
+
 
 
 
@@ -240,7 +158,9 @@ export default function Page() {
         >
           <div className="flex items-center justify-between">
             <div className="flex-1 space-y-1.5">
-              <h1 className="text-2xl font-bold">{RESUME_DATA.name}</h1>
+              <h1 className="text-2xl font-bold">
+                <DecryptText text={RESUME_DATA.name} autoStart={true} triggerOnView={false} />
+              </h1>
               <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground">
                 {RESUME_DATA.about}
               </p>
@@ -318,7 +238,9 @@ export default function Page() {
 
           <Section id="about">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold">About</h2>
+              <h2 className="text-xl font-bold">
+                <DecryptText text="About" />
+              </h2>
             </div>
             <p className="text-pretty font-mono text-sm text-muted-foreground">
               {RESUME_DATA.summary}
@@ -327,7 +249,9 @@ export default function Page() {
           </Section>
 
           <Section id="work" className="scroll-mt-16">
-            <h2 className="text-xl font-bold">Certifications and Trainings</h2>
+            <h2 className="text-xl font-bold">
+              <DecryptText text="Certifications and Trainings" />
+            </h2>
             <IconTimeline
               items={RESUME_DATA.work}
               defaultIcon={<ShieldCheckIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
@@ -345,7 +269,9 @@ export default function Page() {
           {/* Published Work Section */}
           {RESUME_DATA.publications && RESUME_DATA.publications.length > 0 && (
             <Section id="publications" className="scroll-mt-16">
-              <h2 className="text-xl font-bold">Academic Publications</h2>
+              <h2 className="text-xl font-bold">
+                <DecryptText text="Academic Publications" />
+              </h2>
               <IconTimeline
                 items={RESUME_DATA.publications.map(pub => ({
                   company: pub.publisher.split("|")[0].trim(),
@@ -364,7 +290,9 @@ export default function Page() {
           {/* Achievements & News Section */}
           {RESUME_DATA.achievements && RESUME_DATA.achievements.length > 0 && (
             <Section id="achievements" className="scroll-mt-16">
-              <h2 className="text-xl font-bold">Achievements & Highlights</h2>
+              <h2 className="text-xl font-bold">
+                <DecryptText text="Achievements & Highlights" />
+              </h2>
               <IconTimeline
                 items={RESUME_DATA.achievements.map(achievement => ({
                   company: achievement.title,
@@ -408,7 +336,9 @@ export default function Page() {
             <Section id="blog" className="scroll-mt-16">
               <div className="mb-6 flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-bold">Latest Blog Posts</h2>
+                  <h2 className="text-xl font-bold">
+                    <DecryptText text="Latest Blog Posts" />
+                  </h2>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Recent articles and insights
                   </p>
@@ -439,14 +369,18 @@ export default function Page() {
           )}
 
           <Section id="skills" className="scroll-mt-16">
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="text-xl font-bold">
+              <DecryptText text="Skills" />
+            </h2>
             <div className="mt-5">
               <InteractiveSkills skills={Array.from(RESUME_DATA.skills)} />
             </div>
           </Section>
 
           <Section id="projects" className="print-force-new-page scroll-mt-16">
-            <h2 className="text-xl font-bold">Projects</h2>
+            <h2 className="text-xl font-bold">
+              <DecryptText text="Projects" />
+            </h2>
             <div className="-mx-3 mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
               {RESUME_DATA.projects.map((project, index) => (
                 <motion.div
@@ -468,7 +402,9 @@ export default function Page() {
           </Section>
 
           <Section id="education" className="scroll-mt-16">
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="text-xl font-bold">
+              <DecryptText text="Education" />
+            </h2>
             <IconTimeline
               items={RESUME_DATA.education.map(edu => ({
                 company: edu.school,
@@ -487,7 +423,10 @@ export default function Page() {
       </motion.div>
 
       {/* Add the name animation component as overlay - renders on top */}
-      <NameAnimation />
+      <NameAnimationOverlay
+        name={RESUME_DATA.name}
+        subtitle={RESUME_DATA.about}
+      />
     </main>
   );
 }

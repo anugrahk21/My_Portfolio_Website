@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   HomeIcon,
   BookOpenIcon,
@@ -38,6 +39,7 @@ interface NavbarProps {
 
 export function HoverNavbar({ links = [], navItems: customNavItems }: NavbarProps) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   // Command menu keyboard shortcut
   React.useEffect(() => {
@@ -87,8 +89,23 @@ export function HoverNavbar({ links = [], navItems: customNavItems }: NavbarProp
     e.preventDefault();
     if (href.startsWith("#")) {
       scrollToSection(href.substring(1));
+    } else if (href.startsWith("/#")) {
+      // Check if already on home page
+      const isOnHomePage = window.location.pathname === "/";
+
+      if (isOnHomePage) {
+        // Already on home page, just scroll directly
+        scrollToSection(href.substring(2));
+      } else {
+        // Navigate to home page first, then scroll
+        router.push("/");
+        setTimeout(() => {
+          scrollToSection(href.substring(2));
+        }, 100);
+      }
     } else {
-      window.location.href = href;
+      // Use Next.js router for client-side navigation
+      router.push(href);
     }
   };
 

@@ -7,12 +7,14 @@ import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon }
 import Link from "next/link";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import { ShareButtons } from "./share-buttons";
 
 interface BlogPostUIProps {
   title: string;
   date: string;
   readingTime: string;
   tags: string[];
+  excerpt?: string;
   children: React.ReactNode;
 }
 
@@ -21,6 +23,7 @@ export function BlogPostUI({
   date,
   readingTime,
   tags,
+  excerpt = "",
   children,
 }: BlogPostUIProps) {
   // Format the date for better readability
@@ -100,7 +103,14 @@ export function BlogPostUI({
           {children}
         </motion.div>
 
-        <div className="mt-16 border-t border-muted pt-8">
+        {/* Share Buttons */}
+        <ShareButtons
+          title={title}
+          url={typeof window !== 'undefined' ? window.location.href : ''}
+          description={excerpt}
+        />
+
+        <div className="mt-8 border-t border-muted pt-8">
           <Link
             href="/blog"
             className="flex w-fit items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
