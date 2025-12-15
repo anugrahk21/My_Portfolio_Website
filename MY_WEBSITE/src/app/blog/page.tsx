@@ -15,10 +15,10 @@ export async function generateMetadata(): Promise<Metadata> {
       `Read articles and insights on AI, cybersecurity, and technology by ${RESUME_DATA.name}.`,
     keywords: ["blog", "AI", "cybersecurity", "technology", "research", RESUME_DATA.name],
     openGraph: {
-      title: `Blog | ${RESUME_DATA.name}`,
+      title: "Blog",
       description: "Articles and insights on AI, cybersecurity, and technology.",
       url: `${siteUrl}/blog`,
-      siteName: `${RESUME_DATA.name}'s Blog`,
+      siteName: RESUME_DATA.name,
       images: [
         {
           url: `${siteUrl}/og-image.png`, // Use a default OG image
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `Blog | ${RESUME_DATA.name}`,
+      title: "Blog",
       description: "Articles and insights on AI, cybersecurity, and technology.",
       // creator: "@your_twitter_handle",
       images: [`${siteUrl}/og-image.png`],

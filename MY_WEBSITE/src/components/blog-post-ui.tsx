@@ -16,6 +16,7 @@ interface BlogPostUIProps {
   readingTime: string;
   tags: string[];
   excerpt?: string;
+  url?: string;
   children: React.ReactNode;
 }
 
@@ -25,6 +26,7 @@ export function BlogPostUI({
   readingTime,
   tags,
   excerpt = "",
+  url,
   children,
 }: BlogPostUIProps) {
   // Format the date for better readability
@@ -115,7 +117,7 @@ export function BlogPostUI({
         {/* Share Buttons */}
         <ShareButtons
           title={title}
-          url={typeof window !== 'undefined' ? window.location.href : ''}
+          url={url || (typeof window !== 'undefined' ? window.location.href : '')}
           description={excerpt}
         />
 

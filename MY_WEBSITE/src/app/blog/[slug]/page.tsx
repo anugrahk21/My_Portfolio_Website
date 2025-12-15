@@ -123,6 +123,8 @@ export default async function BlogPostPage({
         date={post.date}
         readingTime={post.readingTime}
         tags={[...(post.tags || [])]}
+        url={post.externalUrl}
+        excerpt={post.excerpt}
       >
         <div className="markdown-content text-foreground">
           <p className="my-4 font-mono text-sm leading-relaxed text-muted-foreground">
@@ -150,7 +152,9 @@ export default async function BlogPostPage({
   }
 
   // For internal posts with direct content
-  const { title, date, readingTime, tags, content } = post;
+  const { title, date, readingTime, tags, content, excerpt } = post;
+  const siteUrl = RESUME_DATA.personalWebsiteUrl;
+  const postUrl = `${siteUrl}/blog/${slug}`;
 
   // Make sure content exists
   if (!content) {
@@ -160,6 +164,8 @@ export default async function BlogPostPage({
         date={date}
         readingTime={readingTime}
         tags={[...(tags || [])]}
+        url={postUrl}
+        excerpt={excerpt}
       >
         <div className="py-8 text-center">
           <p className="text-muted-foreground">Content unavailable</p>
@@ -174,6 +180,8 @@ export default async function BlogPostPage({
       date={date}
       readingTime={readingTime}
       tags={[...(tags || [])]}
+      url={postUrl}
+      excerpt={excerpt}
     >
       <div className="markdown-content text-foreground">
         <ReactMarkdown
