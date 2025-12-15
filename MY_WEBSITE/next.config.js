@@ -24,6 +24,18 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: [
+      "lucide-react",
+      "date-fns",
+      "framer-motion",
+      "posthog-js",
+      "@radix-ui/react-avatar",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-tooltip",
+    ],
+  },
 };
 
 module.exports = nextConfig;
