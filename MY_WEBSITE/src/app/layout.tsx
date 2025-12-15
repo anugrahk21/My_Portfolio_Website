@@ -88,6 +88,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
+        {/* Preload critical resources for LCP */}
+        <link rel="preload" href="/anugrah.webp" as="image" type="image/webp" />
+
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `
