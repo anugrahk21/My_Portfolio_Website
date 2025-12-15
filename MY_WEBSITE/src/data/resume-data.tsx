@@ -135,16 +135,22 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       html_url: "https://github.com/anugrahk21/Project-Cerberus",
       topics: ["ai-security", "multi-agent", "cybersecurity", "llm-safety"],
       highlight: true,
+      stargazers_count: 0,
+      forks_count: 0,
     },
     {
       name: "Cyber-Projects",
       html_url: "https://github.com/anugrahk21/Cyber-Projects",
       topics: ["cybersecurity", "python", "password-security", "cryptography"],
+      stargazers_count: 0,
+      forks_count: 0,
     },
     {
       name: "Personal_AI_Life_Coach",
       html_url: "https://github.com/anugrahk21/Personal_AI_Life_Coach",
       topics: ["ai-agent", "flask", "gemini-api", "mental-health"],
+      stargazers_count: 0,
+      forks_count: 0,
     },
   ],
   projects: [

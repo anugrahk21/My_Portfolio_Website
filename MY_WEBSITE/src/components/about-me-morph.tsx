@@ -7,7 +7,7 @@ import { RESUME_DATA } from "@/data/resume-data";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 // Styles for markdown content
 const markdownStyles = {

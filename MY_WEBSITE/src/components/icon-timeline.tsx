@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -31,13 +31,13 @@ export interface TimelineItem {
     badges: readonly string[] | string[];
     icon?: React.ReactNode; // Custom icon for this item
     logo?: string; // Custom logo path for this item
+    variant?: "default" | "shine"; // Visual variant
 }
 
 // Map company names to their logo files (for backward compatibility)
 const companyLogos: Record<string, string> = {
     "Microsoft Research": "/microsoft-logo.png",
     Apple: "/apple-logo.png",
-    CognitiveLab: "/cognitivelab-logo.png",
     TurboML: "/tml-logo.png",
     "Mandelbulb Technologies": "/mandelbulb_logo.jpeg",
     "Indian Institute of Science (IISC)": "/iisc-logo.png",
@@ -60,7 +60,7 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
     // Priority: item.logo > companyLogos mapping > item.icon > defaultIcon
     const logoSrc = item.logo || companyLogos[item.company];
     const displayIcon = item.icon || defaultIcon;
-    const isCognitiveLab = item.company === "CognitiveLab";
+    const isShineVariant = item.variant === "shine";
 
     return (
         <motion.div
@@ -94,8 +94,8 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
 
                 {/* Content */}
                 <div className="flex-1 pb-2">
-                    {isCognitiveLab ? (
-                        <Link href="/cognitivelab">
+                    {isShineVariant ? (
+                        <Link href={item.link}>
                             <div className="relative block cursor-pointer rounded-lg p-[2px] shadow-sm transition-all duration-300 hover:scale-[1.01]">
                                 {/* Custom animated shine border effect - thinner and more translucent */}
                                 <div

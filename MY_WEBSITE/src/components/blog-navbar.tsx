@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { HomeIcon, ArrowLeftIcon, ListIcon, BookOpenIcon } from "lucide-react";
@@ -23,7 +23,7 @@ export function BlogNavbar() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center px-4 pb-2 md:pb-4">
-      <motion.div 
+      <motion.div
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -33,7 +33,7 @@ export function BlogNavbar() {
           {navItems.map((item) => (
             <Button
               key={item.name}
-              variant="ghost" 
+              variant="ghost"
               size="sm"
               className="flex flex-col md:flex-row items-center gap-1 md:gap-2 rounded-full text-xs md:text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-slate-800 px-2 md:px-3 py-1.5 md:py-2"
               asChild

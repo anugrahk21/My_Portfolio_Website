@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { MailIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export function AuthorInfo() {
   return (

@@ -13,7 +13,7 @@ import { Badge } from "./ui/badge";
 import { CalendarIcon, Clock, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export interface BlogPost {
   slug: string;

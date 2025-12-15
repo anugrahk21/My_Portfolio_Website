@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Section } from "./ui/section";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Tooltip,
   TooltipContent,

@@ -3,10 +3,10 @@
 import React, { useEffect } from "react";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { Badge } from "./ui/badge";
-import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon, User } from "lucide-react";
+import { CalendarIcon, Clock, ArrowLeft, HomeIcon, ListIcon, ArrowLeftIcon, User } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ShareButtons } from "./share-buttons";
 import { RESUME_DATA } from "@/data/resume-data";
 
@@ -50,8 +50,9 @@ export function BlogPostUI({
           navItems={[
             { name: "Back", icon: <ArrowLeftIcon className="h-5 w-5" />, href: "/blog" },
             { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "/" },
-            { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
+            { name: "All Posts", icon: <ListIcon className="h-5 w-5" />, href: "/blog" },
           ]}
+          showCommandMenu={false}
         />
       </div>
 

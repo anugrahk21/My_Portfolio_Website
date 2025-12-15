@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { BlogGrid, BlogPost } from "@/components/blog-card";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { AuthorInfo } from "@/components/author-info";
-import { ArrowLeftIcon, HomeIcon, BookOpenIcon } from "lucide-react";
+import { ArrowLeftIcon, HomeIcon, ListIcon } from "lucide-react";
 import { NameAnimationOverlay } from "@/components/magicui/hyper-text";
 import { RESUME_DATA } from "@/data/resume-data";
 
@@ -33,8 +33,9 @@ export function BlogIndexUI({ posts }: BlogIndexUIProps) {
           navItems={[
             { name: "Back", icon: <ArrowLeftIcon className="h-5 w-5" />, href: "/" },
             { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "/" },
-            { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
+            { name: "All Posts", icon: <ListIcon className="h-5 w-5" />, href: "/blog" },
           ]}
+          showCommandMenu={false}
         />
         <header className="mb-8">
           <h1 className="mb-2 text-3xl font-bold">Blog</h1>

@@ -14,7 +14,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatedGradientBorder } from "./magicui/gradient-border";
