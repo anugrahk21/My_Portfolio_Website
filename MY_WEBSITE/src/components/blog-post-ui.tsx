@@ -3,11 +3,12 @@
 import React from "react";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { Badge } from "./ui/badge";
-import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon } from "lucide-react";
+import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon, User } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import { ShareButtons } from "./share-buttons";
+import { RESUME_DATA } from "@/data/resume-data";
 
 interface BlogPostUIProps {
   title: string;
@@ -80,15 +81,23 @@ export function BlogPostUI({
               {title}
             </h1>
 
-            <div className="flex items-center gap-4 border-b border-muted pb-6 font-mono text-xs text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <CalendarIcon className="h-4 w-4" />
-                <span>{formattedDate}</span>
+            <div className="flex items-center justify-between gap-4 border-b border-muted pb-6">
+              <div className="flex items-center gap-4 font-mono text-xs text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="h-4 w-4" />
+                  <span>{formattedDate}</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span>{readingTime}</span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{readingTime}</span>
+              {/* Author Credit */}
+              <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+                <User className="h-4 w-4" />
+                <span>By {RESUME_DATA.name}</span>
               </div>
             </div>
           </motion.div>

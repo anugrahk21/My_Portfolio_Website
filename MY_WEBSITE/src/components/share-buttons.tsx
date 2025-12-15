@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Twitter, Linkedin, Facebook, MessageCircle, Link2, Check } from "lucide-react";
+import { Share2, Twitter, Linkedin, Facebook, MessageCircle, Link2, Check, Github, Mail } from "lucide-react";
+import { RESUME_DATA } from "@/data/resume-data";
 
 interface ShareButtonsProps {
     title: string;
@@ -37,6 +38,59 @@ export function ShareButtons({ title, url, description = "" }: ShareButtonsProps
 
     return (
         <div className="my-8 rounded-xl border border-border p-6">
+            {/* Author Info */}
+            <div className="mb-6 flex items-center justify-between border-b border-muted pb-4">
+                <div>
+                    <p className="text-sm font-semibold">Written by</p>
+                    <p className="text-lg font-bold text-primary">{RESUME_DATA.name}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        asChild
+                    >
+                        <a
+                            href="https://github.com/anugrahk21"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="GitHub"
+                        >
+                            <Github className="h-4 w-4" />
+                        </a>
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        asChild
+                    >
+                        <a
+                            href="https://www.linkedin.com/in/anugrah-k"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="LinkedIn"
+                        >
+                            <Linkedin className="h-4 w-4" />
+                        </a>
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        asChild
+                    >
+                        <a
+                            href="mailto:anugrah.k910@gmail.com"
+                            title="Email"
+                        >
+                            <Mail className="h-4 w-4" />
+                        </a>
+                    </Button>
+                </div>
+            </div>
+
             <div className="flex items-center gap-2 mb-4">
                 <Share2 className="h-5 w-5 text-primary" />
                 <h3 className="text-lg font-semibold">Share this article</h3>
