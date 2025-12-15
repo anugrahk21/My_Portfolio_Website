@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -230,14 +231,16 @@ export default function Page() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
+              className="relative size-28 overflow-hidden rounded-full border border-border bg-muted"
             >
-              <Avatar className="size-28">
-                <AvatarImage
-                  alt={RESUME_DATA.name}
-                  src={RESUME_DATA.avatarUrl}
-                />
-                <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
-              </Avatar>
+              <Image
+                src={RESUME_DATA.avatarUrl}
+                alt={RESUME_DATA.name}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 112px, 112px"
+              />
             </motion.div>
           </div>
 
