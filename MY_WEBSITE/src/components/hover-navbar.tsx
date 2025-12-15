@@ -211,10 +211,25 @@ export function HoverNavbar({ links = [], navItems: customNavItems }: NavbarProp
                   keywords={[item.name.toLowerCase(), item.href.replace('#', '')]}
                   onSelect={() => {
                     setOpen(false);
+                    // Use same navigation logic as navbar
                     if (item.href.startsWith("#")) {
                       scrollToSection(item.href.substring(1));
+                    } else if (item.href.startsWith("/#")) {
+                      // Check if already on home page
+                      const isOnHomePage = window.location.pathname === "/";
+                      if (isOnHomePage) {
+                        // Already on home page, just scroll directly
+                        scrollToSection(item.href.substring(2));
+                      } else {
+                        // Navigate to home page first, then scroll
+                        router.push("/");
+                        setTimeout(() => {
+                          scrollToSection(item.href.substring(2));
+                        }, 100);
+                      }
                     } else {
-                      window.location.href = item.href;
+                      // Use Next.js router for client-side navigation
+                      router.push(item.href);
                     }
                   }}
                 >
