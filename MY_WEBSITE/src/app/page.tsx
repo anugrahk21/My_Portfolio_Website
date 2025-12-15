@@ -145,9 +145,9 @@ export default function Page() {
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 pb-24 md:p-16 md:pb-24 print:p-12">
       {/* Content is always rendered and visible to crawlers/SEO */}
       <motion.div
-        initial={{ opacity: 1 }} // Start visible for SSR/crawlers
-        animate={{ opacity: animationComplete ? 1 : 0.1 }} // Slightly visible during animation
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
         style={{
           // Ensure content is always accessible to screen readers and crawlers
           position: "relative",
