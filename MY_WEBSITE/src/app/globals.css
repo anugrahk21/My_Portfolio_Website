@@ -3,23 +3,11 @@
 @tailwind utilities;
 
 /* Reset margins and padding */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  /* Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/* GPU acceleration for animated elements */
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
 }
 
 @layer base {
@@ -57,34 +45,53 @@ html, body {
 
   .dark {
     /* Custom dark mode palette: #000000, #303030, #5e5e5e, #919191, #c6c6c6 */
-    --background: 0 0% 0%; /* #000000 */
-    --foreground: 0 0% 78%; /* #c6c6c6 */
+    --background: 0 0% 0%;
+    /* #000000 */
+    --foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
-    --card: 0 0% 19%; /* #303030 */
-    --card-foreground: 0 0% 78%; /* #c6c6c6 */
+    --card: 0 0% 19%;
+    /* #303030 */
+    --card-foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
-    --popover: 0 0% 19%; /* #303030 */
-    --popover-foreground: 0 0% 78%; /* #c6c6c6 */
+    --popover: 0 0% 19%;
+    /* #303030 */
+    --popover-foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
-    --primary: 0 0% 78%; /* #c6c6c6 */
-    --primary-foreground: 0 0% 0%; /* #000000 */
+    --primary: 0 0% 78%;
+    /* #c6c6c6 */
+    --primary-foreground: 0 0% 0%;
+    /* #000000 */
 
-    --secondary: 0 0% 37%; /* #5e5e5e */
-    --secondary-foreground: 0 0% 78%; /* #c6c6c6 */
+    --secondary: 0 0% 37%;
+    /* #5e5e5e */
+    --secondary-foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
-    --muted: 0 0% 37%; /* #5e5e5e */
-    --muted-foreground: 0 0% 57%; /* #919191 */
+    --muted: 0 0% 37%;
+    /* #5e5e5e */
+    --muted-foreground: 0 0% 57%;
+    /* #919191 */
 
-    --accent: 0 0% 37%; /* #5e5e5e */
-    --accent-foreground: 0 0% 78%; /* #c6c6c6 */
+    --accent: 0 0% 37%;
+    /* #5e5e5e */
+    --accent-foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 78%; /* #c6c6c6 */
+    --destructive-foreground: 0 0% 78%;
+    /* #c6c6c6 */
 
-    --border: 0 0% 37%; /* #5e5e5e */
-    --input: 0 0% 37%; /* #5e5e5e */
-    --ring: 0 0% 57%; /* #919191 */
+    --border: 0 0% 37%;
+    /* #5e5e5e */
+    --input: 0 0% 37%;
+    /* #5e5e5e */
+    --ring: 0 0% 57%;
+    /* #919191 */
   }
+
   .theme {
     --animate-shine: shine var(--duration) infinite linear;
   }
@@ -94,6 +101,7 @@ html, body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -108,9 +116,11 @@ html, body {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -124,6 +134,7 @@ html, body {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -138,6 +149,7 @@ html, body {
     transform: translateX(150px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -153,6 +165,7 @@ html, body {
     transform: translateX(-150px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -168,6 +181,7 @@ html, body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -182,36 +196,44 @@ html, body {
 
 @theme inline {
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;
+    0% {
+      background-position: 0% 0%;
     }
-  50% {
-    background-position: 100% 100%;
+
+    50% {
+      background-position: 100% 100%;
     }
-  to {
-    background-position: 0% 0%;
-    }
-  }
-  @keyframes shine {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
-  to {
-    background-position: 0% 0%;
+
+    to {
+      background-position: 0% 0%;
     }
   }
+
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;
+    0% {
+      background-position: 0% 0%;
     }
-  50% {
-    background-position: 100% 100%;
+
+    50% {
+      background-position: 100% 100%;
     }
-  to {
-    background-position: 0% 0%;
+
+    to {
+      background-position: 0% 0%;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+
+    50% {
+      background-position: 100% 100%;
+    }
+
+    to {
+      background-position: 0% 0%;
     }
   }
 }

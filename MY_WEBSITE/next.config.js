@@ -1,23 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable SWC minification for smaller bundles
-  swcMinify: true,
-
-  // Compiler optimizations
-  compiler: {
-    // Remove console logs in production
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-
-  // Experimental features for better performance
-  experimental: {
-    // Optimize package imports
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'date-fns'],
-  },
-
   images: {
-    // Use modern image formats
-    formats: ['image/avif', 'image/webp'],
+    // domains: [
+    //   "media.licdn.com",
+    //   "analyticsindiamag.com",
+    //   "www.marktechpost.com",
+    //   "runacap.com",
+    //   "www.aibase.com",
+    //   "hub.docker.com",
+    //   "huggingface.co",
+    //   "arxiv.org",
+    //   "d12aarmt01l54a.cloudfront.net", // Added cloudfront domain
+    //   "abs.twimg.com", // Added Twitter image domain
+    // ],
     remotePatterns: [
       {
         protocol: "https",

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, MotionProps } from "motion/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type CharacterSet = string[] | readonly string[];
 
@@ -159,26 +159,25 @@ export function NameAnimationOverlay({
 }: NameAnimationOverlayProps) {
   const [visible, setVisible] = useState(true);
 
-  // Memoize to prevent recalculation
-  const nameWords = useMemo(() => name.split(" "), [name]);
-
   useEffect(() => {
-    // Prevent page scrolling during animation - use CSS class instead of direct style
+    // Prevent page scrolling during animation
     if (visible) {
-      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
 
     const timer = setTimeout(() => {
       setVisible(false);
-      document.documentElement.style.overflow = "";
     }, duration);
 
     return () => {
       clearTimeout(timer);
-      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
     };
   }, [visible, duration]);
 
+  const nameWords = name.split(" ");
 
   return (
     <AnimatePresence>
@@ -188,8 +187,7 @@ export function NameAnimationOverlay({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background backdrop-blur-xl will-change-opacity"
-          style={{ willChange: 'opacity' }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-background backdrop-blur-xl"
         >
           <div className="relative">
             <motion.div
