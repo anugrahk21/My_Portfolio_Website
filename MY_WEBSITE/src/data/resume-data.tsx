@@ -273,7 +273,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     {
       slug: "retrieval-augmented-generation-rag",
       title: "Retrieval-Augmented Generation (RAG)",
-      date: "January 2025",
+      date: "December 2025",
       excerpt: "A powerful Streamlit application that demonstrates Retrieval-Augmented Generation (RAG) using Google's Gemini AI. Upload your documents and ask questions - the AI will answer based solely on the document content!",
       tags: ["Python", "Streamlit", "Google Gemini API", "RAG", "Document Processing"],
       readingTime: "5 min read",
