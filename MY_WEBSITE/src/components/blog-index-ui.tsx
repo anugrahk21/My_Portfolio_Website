@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BlogGrid, BlogPost } from "@/components/blog-card";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { AuthorInfo } from "@/components/author-info";
@@ -13,6 +13,11 @@ interface BlogIndexUIProps {
 }
 
 export function BlogIndexUI({ posts }: BlogIndexUIProps) {
+  // Force scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* Name Animation Overlay - Same as homepage */}

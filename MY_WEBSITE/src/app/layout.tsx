@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: RESUME_DATA.name,
     images: [
       {
-        url: "/website_ss.png", // Updated to use website_ss.png
+        url: `${RESUME_DATA.personalWebsiteUrl}/webpage_ss.png`,
         width: 1200,
         height: 630,
         alt: `${RESUME_DATA.name} - ${RESUME_DATA.about}`,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description: RESUME_DATA.summary,
     // site: "@your_twitter_handle", // Add site handle if available
     creator: RESUME_DATA.name, // Updated from hardcoded handle
-    images: ["/website_ss.png"], // Updated to yuse website_ss.png
+    images: [`${RESUME_DATA.personalWebsiteUrl}/webpage_ss.png`], // Absolute URL
   },
   alternates: {
     canonical: RESUME_DATA.personalWebsiteUrl,

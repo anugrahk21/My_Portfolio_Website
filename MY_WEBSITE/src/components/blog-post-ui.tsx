@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { Badge } from "./ui/badge";
 import { CalendarIcon, Clock, ArrowLeft, HomeIcon, BookOpenIcon, ArrowLeftIcon, User } from "lucide-react";
@@ -29,6 +29,11 @@ export function BlogPostUI({
   url,
   children,
 }: BlogPostUIProps) {
+  // Force scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Format the date for better readability
   const formattedDate = (() => {
     try {
