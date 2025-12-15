@@ -35,7 +35,7 @@ const additionalPaths = [
 ];
 
 module.exports = {
-  siteUrl: "https://adithyask.com",
+  siteUrl: "https://anugrahk.vercel.app",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [

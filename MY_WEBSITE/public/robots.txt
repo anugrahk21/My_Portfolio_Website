@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://adithyask.com
+Host: https://anugrahk.vercel.app
 
 # Sitemaps
-Sitemap: https://adithyask.com/sitemap.xml
+Sitemap: https://anugrahk.vercel.app/sitemap.xml
