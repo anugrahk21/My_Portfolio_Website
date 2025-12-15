@@ -10,7 +10,7 @@ export const RESUME_DATA = {
     "Cybersecurity student with a passion for AI applications in security. Focused on web app security, penetration testing, and building AI-powered tools. Currently pursuing B.Tech in Computer Science & Engineering (Cybersecurity) with hands-on experience in password security, AI agents, and research in sustainable technology.",
   // avatarUrl: "https://anugrah.com/anugrah.jpg",
   avatarUrl: "/anugrah.jpeg",
-  personalWebsiteUrl: "https://github.com/anugrahk21",
+  personalWebsiteUrl: "https://anugrahk.vercel.app",
   resumeUrl: "/Anugrah_Main_CV.pdf",
   extendedBio: `
   
