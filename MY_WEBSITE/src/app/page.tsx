@@ -52,6 +52,11 @@ export default function Page() {
   );
   const [animationComplete, setAnimationComplete] = useState(false);
 
+  // Force scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Command menu links
   const commandLinks = [
     {
