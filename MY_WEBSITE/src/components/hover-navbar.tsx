@@ -10,7 +10,6 @@ import {
   BookOpenIcon,
   BriefcaseIcon,
   GraduationCapIcon,
-  CodeIcon,
   FileTextIcon,
   CommandIcon,
 } from "lucide-react";
@@ -65,16 +64,11 @@ export function HoverNavbar({ links = [], navItems: customNavItems, showCommandM
       href: "/#about",
     },
     {
-      name: "Certifications",
-      icon: <BriefcaseIcon className="h-5 w-5" />,
-      href: "/#work",
-    },
-    { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
-    {
       name: "Projects",
-      icon: <CodeIcon className="h-5 w-5" />,
+      icon: <BriefcaseIcon className="h-5 w-5" />,
       href: "/#projects",
     },
+    { name: "Blog", icon: <BookOpenIcon className="h-5 w-5" />, href: "/blog" },
     {
       name: "Education",
       icon: <GraduationCapIcon className="h-5 w-5" />,
