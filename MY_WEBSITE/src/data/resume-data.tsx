@@ -133,6 +133,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     {
       name: "Project-Cerberus",
       html_url: "https://github.com/anugrahk21/Project-Cerberus",
+      description: "A production-grade, multi-agent security reverse proxy that acts as an 'Iron Dome' for AI models. Built with weighted voting, canary tokens, and context-aware memory to detect and block prompt injection attacks in real-time.",
       topics: ["ai-security", "multi-agent", "cybersecurity", "llm-safety"],
       highlight: true,
       stargazers_count: 0,
@@ -141,6 +142,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     {
       name: "Cyber-Projects",
       html_url: "https://github.com/anugrahk21/Cyber-Projects",
+      description: "Python tool for advanced password strength analysis with 0-100 point scoring system. Features secure password generation, entropy calculation, and simulated breach detection.",
       topics: ["cybersecurity", "python", "password-security", "cryptography"],
       stargazers_count: 0,
       forks_count: 0,
@@ -148,41 +150,26 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     {
       name: "Personal_AI_Life_Coach",
       html_url: "https://github.com/anugrahk21/Personal_AI_Life_Coach",
+      description: "Full-stack AI agent providing real-time, context-aware guidance using Gemini 2.0. Implements advanced prompt engineering, session memory, and safety guardrails.",
       topics: ["ai-agent", "flask", "gemini-api", "mental-health"],
       stargazers_count: 0,
       forks_count: 0,
     },
-  ],
-  projects: [
     {
-      title: "Password Security Tool",
-      techStack: ["Python", "Cryptographic Libraries", "Regular Expressions", "Entropy Calculation"],
-      description:
-        "Developed a Python tool for advanced password strength analysis with 0-100 point scoring system. Features secure password generation, entropy calculation, and simulated breach detection.",
-      link: {
-        label: "github.com",
-        href: "https://github.com/anugrahk21/Cyber-Projects/tree/main/P1",
-      },
+      name: "Retrieval-Augmented-Generation-RAG",
+      html_url: "https://github.com/anugrahk21/Retrieval-Augmented-Generation-RAG",
+      description: "A powerful Streamlit application that demonstrates Retrieval-Augmented Generation (RAG) using Google's Gemini AI. Upload your documents and ask questions - the AI will answer based solely on the document content!",
+      topics: ["python", "streamlit", "gemini-api", "rag"],
+      stargazers_count: 0,
+      forks_count: 0,
     },
     {
-      title: "AI Personal Life Coach",
-      techStack: ["Python", "Flask", "Google Gemini API", "HTML/CSS", "Session Management"],
-      description:
-        "Full-stack AI agent providing real-time, context-aware guidance using Gemini 2.0. Implements advanced prompt engineering, session memory, and safety guardrails for detecting self-harm triggers.",
-      link: {
-        label: "live demo",
-        href: "https://personal-ai-ally.onrender.com/",
-      },
-    },
-    {
-      title: "Retrieval-Augmented Generation (RAG)",
-      techStack: ["Python", "Streamlit", "Google Gemini API", "RAG", "Document Processing"],
-      description:
-        "A powerful Streamlit application that demonstrates Retrieval-Augmented Generation (RAG) using Google's Gemini AI. Upload your documents and ask questions - the AI will answer based solely on the document content!",
-      link: {
-        label: "github.com",
-        href: "https://github.com/anugrahk21/Retrieval-Augmented-Generation-RAG",
-      },
+      name: "AI Agent with Tool Selection",
+      html_url: "https://github.com/anugrahk21/AI_Agents-IBM",
+      description: "A simple AI agent powered by Google's FLAN-T5 that intelligently routes user queries to specialized tools: calculator, date/time, and conversational chat.",
+      topics: ["python", "nlp", "chatbot", "transformers", "huggingface", "ai-agent", "llm", "flan-t5"],
+      stargazers_count: 0,
+      forks_count: 0,
     },
   ],
   extraCurricular: [
