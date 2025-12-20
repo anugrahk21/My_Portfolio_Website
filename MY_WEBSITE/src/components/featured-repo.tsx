@@ -242,7 +242,7 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = ({
   };
 
   return (
-    <section className="mb-8">
+    <section id="projects" className="mb-8 scroll-mt-16">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-xl font-bold">
           <DecryptText text={title} />
