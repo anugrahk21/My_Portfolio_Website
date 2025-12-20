@@ -73,7 +73,7 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
         >
             {/* Timeline line */}
             {!isLast && (
-                <div className="absolute bottom-0 left-5 top-10 w-px bg-muted" />
+                <div className="absolute -bottom-2 left-5 top-8 w-px bg-muted" />
             )}
 
             {/* Timeline item */}
