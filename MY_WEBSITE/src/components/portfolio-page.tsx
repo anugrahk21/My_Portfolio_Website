@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
-import { ProjectCard } from "@/components/project-card";
 import { FeaturedRepos, Repository } from "@/components/featured-repo";
 import { HoverNavbar } from "@/components/hover-navbar";
 import { motion } from "motion/react";
@@ -202,12 +201,21 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                         />
                     </Section>
 
-                    {/* Featured Repositories */}
+                    {/* Featured Repositories [ Projects ] */}
                     <FeaturedRepos
                         repositories={repoData}
-                        title="Featured Open Source Work"
+                        title="Featured Repositories [ Projects ]"
                         loading={false}
                     />
+
+                    <Section id="skills" className="scroll-mt-16">
+                        <h2 className="text-xl font-bold">
+                            <DecryptText text="Skills" />
+                        </h2>
+                        <div className="mt-5">
+                            <InteractiveSkills skills={Array.from(RESUME_DATA.skills)} />
+                        </div>
+                    </Section>
 
                     {/* Published Work Section */}
                     {RESUME_DATA.publications && RESUME_DATA.publications.length > 0 && (
@@ -251,6 +259,25 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                         </Section>
                     )}
 
+                    <Section id="education" className="scroll-mt-16">
+                        <h2 className="text-xl font-bold">
+                            <DecryptText text="Education" />
+                        </h2>
+                        <IconTimeline
+                            items={RESUME_DATA.education.map(edu => ({
+                                company: edu.school,
+                                title: edu.degree,
+                                description: `${edu.degree} (${edu.start} - ${edu.end})`,
+                                start: edu.start,
+                                end: edu.end,
+                                link: "#",
+                                badges: [],
+                            }))}
+                            defaultIcon={<GraduationCapIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
+                            maxInitialItems={10}
+                        />
+                    </Section>
+
                     {/* Featured Blog Posts Section */}
                     {RESUME_DATA.blogs && RESUME_DATA.blogs.length > 0 && (
                         <Section id="blog" className="scroll-mt-16">
@@ -287,58 +314,6 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                             </div>
                         </Section>
                     )}
-
-                    <Section id="skills" className="scroll-mt-16">
-                        <h2 className="text-xl font-bold">
-                            <DecryptText text="Skills" />
-                        </h2>
-                        <div className="mt-5">
-                            <InteractiveSkills skills={Array.from(RESUME_DATA.skills)} />
-                        </div>
-                    </Section>
-
-                    <Section id="projects" className="print-force-new-page scroll-mt-16">
-                        <h2 className="text-xl font-bold">
-                            <DecryptText text="Projects" />
-                        </h2>
-                        <div className="-mx-3 mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
-                            {RESUME_DATA.projects.map((project, index) => (
-                                <motion.div
-                                    key={project.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                                >
-                                    <ProjectCard
-                                        title={project.title}
-                                        description={project.description}
-                                        tags={project.techStack}
-                                        link={"link" in project ? project.link.href : undefined}
-                                    />
-                                </motion.div>
-                            ))}
-                        </div>
-                    </Section>
-
-                    <Section id="education" className="scroll-mt-16">
-                        <h2 className="text-xl font-bold">
-                            <DecryptText text="Education" />
-                        </h2>
-                        <IconTimeline
-                            items={RESUME_DATA.education.map(edu => ({
-                                company: edu.school,
-                                title: edu.degree,
-                                description: `${edu.degree} (${edu.start} - ${edu.end})`,
-                                start: edu.start,
-                                end: edu.end,
-                                link: "#",
-                                badges: [],
-                            }))}
-                            defaultIcon={<GraduationCapIcon className="h-5 w-5 text-primary/80 transition-colors duration-300 group-hover:text-primary" />}
-                            maxInitialItems={10}
-                        />
-                    </Section>
                 </motion.section>
             </motion.div>
 
