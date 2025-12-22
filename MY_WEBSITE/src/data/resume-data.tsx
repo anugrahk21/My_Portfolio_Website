@@ -140,6 +140,14 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       forks_count: 0,
     },
     {
+      name: "Kortex-CLI",
+      html_url: "https://github.com/anugrahk21/Kortex-CLI",
+      description: "AI-powered CLI tool that translates natural language into Linux shell commands using Google Gemini.",
+      topics: ["ai-cli", "python", "gemini-api", "shell-commands"],
+      stargazers_count: 0,
+      forks_count: 0,
+    },
+    {
       name: "Cyber-Projects",
       html_url: "https://github.com/anugrahk21/Cyber-Projects",
       description: "Python tool for advanced password strength analysis with 0-100 point scoring system. Features secure password generation, entropy calculation, and simulated breach detection.",
