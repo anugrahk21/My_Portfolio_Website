@@ -24,7 +24,7 @@ import { ShineBorder } from "./magicui/shine-border";
 export interface TimelineItem {
     company: string;
     title: string;
-    description: string;
+    description?: string;
     start: string;
     end?: string;
     link: string;
@@ -207,9 +207,11 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
                                         </div>
                                     </div>
 
-                                    <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">
-                                        {item.description}
-                                    </p>
+                                    {item.description && (
+                                        <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">
+                                            {item.description}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </Link>
@@ -241,9 +243,11 @@ const TimelineItemComponent: React.FC<TimelineItemProps> = ({
                                 ))}
                             </div>
 
-                            <p className="mt-2 text-sm text-muted-foreground">
-                                {item.description}
-                            </p>
+                            {item.description && (
+                                <p className="mt-2 text-sm text-muted-foreground">
+                                    {item.description}
+                                </p>
+                            )}
                         </div>
                     )}
                 </div>

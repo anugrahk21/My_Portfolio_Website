@@ -267,7 +267,6 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                             items={RESUME_DATA.education.map(edu => ({
                                 company: edu.school,
                                 title: edu.degree,
-                                description: `${edu.degree} (${edu.start} - ${edu.end})`,
                                 start: edu.start,
                                 end: edu.end,
                                 link: "#",
