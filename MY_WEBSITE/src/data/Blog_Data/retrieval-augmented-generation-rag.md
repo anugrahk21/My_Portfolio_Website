@@ -1,5 +1,7 @@
 # Retrieval-Augmented Generation (RAG): LLM but better!
 
+[GitHub Repository](https://github.com/anugrahk21/Retrieval-Augmented-Generation-RAG)
+
 ## Introduction
 
 Retrieval-Augmented Generation (RAG) is a powerful technique that combines the strengths of information retrieval and generative AI to create more contextually relevant and accurate responses. In this blog post, we'll explore how to build a production-grade RAG application using Google's Gemini AI and Streamlit, demonstrating its capabilities in document processing and question answering.
