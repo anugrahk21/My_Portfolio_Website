@@ -7,7 +7,7 @@ export const RESUME_DATA = {
   location: "Punjab, India",
   about: "Cybersecurity Student & AI Enthusiast",
   summary:
-    "Cybersecurity student with a passion for AI applications in security. Focused on web app security, penetration testing, and building AI-powered tools. Currently pursuing B.Tech in Computer Science & Engineering (Cybersecurity) with hands-on experience in password security, AI agents, and research in sustainable technology.",
+    "Cybersecurity student with a passion for AI applications in security. Focused on web app security, penetration testing, and building AI-powered tools. Currently pursuing B.Tech in Computer Science & Engineering (Cybersecurity). Patent holder (Pending) in IoT automation with deep expertise in building secure AI agents, RAG systems, and exploring the intersection of Generative AI and digital security, AI agents, and research in sustainable technology.",
   // avatarUrl: "https://anugrah.com/anugrah.jpg",
   avatarUrl: "/anugrah.webp",
   personalWebsiteUrl: "https://anugrahk.vercel.app",
@@ -28,14 +28,11 @@ What excites me most is how AI can revolutionize cybersecurity. My participation
 
 ### Building Practical Solutions
 
-I believe in learning by doing. My projects reflect this philosophy:
-
-- **Password Security Tool**: Built a Python-based system that doesn't just check password strength—it educates users about entropy, simulates breach detection, and generates cryptographically secure passwords.
-- **AI Personal Life Coach**: Engineered a full-stack AI agent using Flask and Google Gemini API, implementing safety guardrails and context-aware interactions. This project taught me about responsible AI development and the importance of ethical considerations.
+I believe in learning by doing. My projects reflect this philosophy.
 
 ### Research and Innovation
 
-Beyond security, I'm passionate about sustainable technology. My research on bioreceptive concrete panels for Indian climates combines environmental consciousness with technical innovation. I've also filed a patent for a smart cooking system, demonstrating my interest in IoT and practical automation.
+Beyond security, I'm passionate about innovation and technology. My research on bioreceptive concrete panels for Indian climates combines environmental consciousness with technical innovation. I've also filed a patent for a smart cooking system, demonstrating my interest in IoT and practical automation.
 
 ## Technical Philosophy
 
@@ -101,24 +98,34 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   work: [
     {
-      company: "Google Cybersecurity Professional Certificate",
-      link: "https://www.coursera.org/professional-certificates/google-cybersecurity",
-      badges: ["In Progress"],
-      title: "Cybersecurity Training",
-      start: "2024",
-      end: "Present",
+      company: "Securiti Education",
+      link: "https://securiti.ai/",
+      badges: ["Certification"],
+      title: "AI Security & Governance Certification",
+      start: "Jan 2026",
+      end: "Jan 2026",
       description:
-        "Completing industry-recognized cybersecurity training with Google. Building practical experience in network security, threat analysis, and Linux tools through applied labs and hands-on security modules. Completed foundational topics preparing for real-world cybersecurity roles.",
+        "Formalized expertise in Generative AI guardrails by mastering governance frameworks to secure model integration. Implemented risk strategies ensuring compliance with global AI safety laws. Applied safety measures (input filtering, sanitization) for secure agents.",
     },
     {
-      company: "AI Agents Intensive Training with Google",
+      company: "Google Kaggle",
       link: "https://www.kaggle.com/",
       badges: ["Completed"],
-      title: "AI Agent Development",
-      start: "November 2024",
-      end: "November 2024",
+      title: "AI Agents Intensive Training",
+      start: "Nov 2025",
+      end: "Nov 2025",
       description:
-        "Completed intensive 5-day online training led by Google ML researchers and engineers. Built and deployed AI agents covering models, orchestration, memory, and evaluation. Participated in live sessions, hands-on codelabs, and completed a final capstone project, earning a Kaggle badge.",
+        "Acquired expertise in agentic architecture (RAG, orchestration, tool-use) through Google-led labs. Built and deployed AI agents covering models, orchestration, memory, and evaluation. Deployed a functional agentic workflow for the final capstone project, earning a verified Kaggle achievement badge.",
+    },
+    {
+      company: "Google Coursera",
+      link: "https://www.coursera.org/professional-certificates/google-cybersecurity",
+      badges: ["In Progress"],
+      title: "Google Cybersecurity Professional Certificate",
+      start: "Oct 2025",
+      end: "Present",
+      description:
+        "Mastering threat detection and incident response by conducting hands-on labs with Linux. Analyzing patterns to identify vulnerabilities using industry-standard tools. Building practical experience for industry-recognized cybersecurity skills.",
     },
   ],
   skills: [
@@ -194,24 +201,6 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   publications: [
     {
-      title: "Bioreceptive Concrete Panels for Indian Climates",
-      description:
-        "Research manuscript focused on formulating concrete panels optimized for warm-humid conditions and monsoon variability in India. Validated design assumptions via literature review and outlined lab-scale formulation planning for porosity, moisture retention, and surface micro-topography.",
-      publisher: "Target: Materials/Sustainable Built Environment",
-      date: "2025",
-      status: "In Progress",
-      websiteUrl: "",
-      resourceUrl: "",
-      citation: "Manuscript in preparation - Prototyping next",
-      tags: [
-        "Sustainable Materials",
-        "Bioreceptive Design",
-        "Climate Adaptation",
-        "Civil Engineering",
-      ],
-      showLinks: false,
-    },
-    {
       title: "A Smart Cooking System",
       description:
         "Patent application for an IoT-assisted cooking workflow system. Completed system architecture and control logic with safety, timing, and alert mechanisms using event-driven design. Prepared prototyping plan for sensor integration and device orchestration.",
@@ -229,11 +218,39 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       ],
       showLinks: false,
     },
+    {
+      title: "Bioreceptive Concrete Panels for Indian Climates",
+      description:
+        "Research manuscript focused on formulating concrete panels optimized for warm-humid conditions and monsoon variability in India. Validated design assumptions via literature review and outlined lab-scale formulation planning for porosity, moisture retention, and surface micro-topography.",
+      publisher: "Target: Materials/Sustainable Built Environment",
+      date: "2025",
+      status: "In Progress",
+      websiteUrl: "",
+      resourceUrl: "",
+      citation: "Manuscript in preparation - Prototyping next",
+      tags: [
+        "Sustainable Materials",
+        "Bioreceptive Design",
+        "Climate Adaptation",
+        "Civil Engineering",
+      ],
+      showLinks: false,
+    }
   ],
   achievements: [
     {
+      title: "Certified in AI Security and Governance",
+      date: "January 2026",
+      description: "Successfully completed securiti.ai's AI Security and Governance certification, covering AI security fundamentals, governance frameworks, and responsible AI practices.",
+      tags: ["AI", "Security", "Governance"],
+      link: {
+        label: "View Certificate",
+        href: "https://www.kaggle.com/",
+      },
+    },
+    {
       title: "Completed AI Agents Intensive Training",
-      date: "November 2024",
+      date: "November 2025",
       description:
         "Successfully completed Google's AI Agents Intensive Training, a rigorous 5-day program led by ML researchers and engineers. Earned Kaggle badge for capstone project.",
       tags: ["AI", "Google", "Training", "Kaggle"],
@@ -248,17 +265,6 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       description:
         "Filed patent application for an innovative IoT-assisted cooking workflow system featuring safety mechanisms, timing control, and event-driven architecture.",
       tags: ["Patent", "IoT", "Innovation"],
-    },
-    {
-      title: "Published Password Security Tool",
-      date: "2025",
-      description:
-        "Developed and published an advanced password security analysis tool on GitHub with features including entropy calculation, breach simulation, and crypto-secure password generation.",
-      tags: ["Cybersecurity", "Open Source", "Python"],
-      link: {
-        label: "View on GitHub",
-        href: "https://github.com/anugrahk21/Cyber-Projects/tree/main/P1",
-      },
     },
   ],
   blogs: [
