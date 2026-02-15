@@ -269,6 +269,15 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   blogs: [
     {
+      slug: "from-idea-to-patent-smart-cooking-system",
+      title: "From Idea to Patent: Designing a Smart Cooking System",
+      date: "February 2026",
+      excerpt: "How I designed a patent-pending smart cooking system using ferrofluids and electromagnetic grids to enable precise, multi-zone heating on a single surface.",
+      tags: ["IoT", "Patent", "Smart Home", "Innovation", "System Design"],
+      readingTime: "6 min read",
+      published: true,
+    },
+    {
       slug: "ai-security-the-ignored-threat",
       title: "The Silent Threat in the AI Gold Rush",
       date: "February 2026",
