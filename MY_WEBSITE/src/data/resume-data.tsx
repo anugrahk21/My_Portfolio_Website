@@ -269,6 +269,15 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   blogs: [
     {
+      slug: "ai-security-the-ignored-threat",
+      title: "The Silent Threat in the AI Gold Rush",
+      date: "February 2026",
+      excerpt: "As companies rush to integrate AI, they're leaving the back door open. From prompt injection to data leakage, I explore the critical overlooked risks in the current AI landscape and how frameworks like OWASP Top 10 for LLMs are trying to fix it.",
+      tags: ["AI Security", "OWASP", "LLM Safety", "Cybersecurity", "Prompt Injection"],
+      readingTime: "5 min read",
+      published: true,
+    },
+    {
       slug: "project-cerberus-ai-iron-dome",
       title: "Project Cerberus: The AI Iron Dome",
       date: "December 2025",
