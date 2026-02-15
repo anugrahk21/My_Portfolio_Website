@@ -24,6 +24,7 @@ import { IconTimeline } from "@/components/icon-timeline";
 import { AboutMeMorph } from "@/components/about-me-morph";
 import { DecryptText } from "@/components/decrypt-text";
 import { NameAnimationOverlay } from "@/components/magicui/hyper-text";
+import Marquee from "@/components/ui/marquee";
 
 interface PortfolioPageProps {
     initialRepoData: Repository[];
@@ -301,15 +302,16 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                                     </Link>
                                 </Button>
                             </div>
-                            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                                {RESUME_DATA.blogs.slice(0, 3).map((post) => (
-                                    <motion.div
-                                        key={post.slug}
-                                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                                    >
-                                        <BlogCard post={post} />
-                                    </motion.div>
-                                ))}
+                            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl">
+                                <Marquee pauseOnHover className="[--duration:20s]">
+                                    {RESUME_DATA.blogs.map((post) => (
+                                        <div key={post.slug} className="w-[300px] md:w-[350px] mx-2 h-full">
+                                            <BlogCard post={post} />
+                                        </div>
+                                    ))}
+                                </Marquee>
+                                <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background"></div>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background"></div>
                             </div>
                         </Section>
                     )}
