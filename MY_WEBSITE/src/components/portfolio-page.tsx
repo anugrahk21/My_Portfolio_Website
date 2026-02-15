@@ -302,7 +302,7 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                                 </Button>
                             </div>
                             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                                {RESUME_DATA.blogs.slice(0, 2).map((post) => (
+                                {RESUME_DATA.blogs.slice(0, 3).map((post) => (
                                     <motion.div
                                         key={post.slug}
                                         whileHover={{ y: -5, transition: { duration: 0.2 } }}
