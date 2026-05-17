@@ -1,0 +1,240 @@
+%-------------------------
+% Resume in Latex
+% Focused on AI, Cyber Security and development
+% By Anugrah K
+%-------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue,
+  linkcolor=black
+}
+
+
+\input{glyphtounicode}      % Ensure Unicode mapping for all glyphs
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Ensure the PDF output is machine readable / ATS parsable
+\pdfgentounicode=1
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Anugrah K} \\ \vspace{1pt}
+    \small +91-95396-94902 $|$ \href{mailto:anugrah.k910@gmail.com}{\underline{anugrah.k910@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/anugrah-k}{\underline{linkedin.com/in/anugrah-k}} $|$
+    \href{https://github.com/anugrahk21}{\underline{github.com/anugrahk21}}
+\end{center}
+
+%-----------PROFILE-----------
+\section{Profile}
+    \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    AI-augmented developer specializing in secure AI workflows, backend system design, and real-world software engineering. Experienced in building full-stack and middleware systems integrating large language models, computer vision, and structured APIs, with demonstrated innovation through production-style projects and a filed patent.
+    }}
+\end{itemize}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C/C++, Java, SQL} \\
+     \textbf{Security Tools}{: Burp Suite, Wireshark, Nmap, Metasploitable} \\
+     \textbf{Frameworks \& Platforms}{: Linux, Git, VMWare/VirtualBox, VS Code} \\
+     \textbf{AI \& GenAI}{: Prompt Engineering, LLM Integration (Gemini API), AI-Assisted Development, AI Safety} \\
+     \textbf{Core Areas}{: Web App Security, Network Security, Penetration Testing, Research \& Development} \\
+     \textbf{Soft Skills}{: Technical Documentation, Critical Thinking, Research \& Analysis, Attention to Detail}
+     }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS & TRAINING-----------
+\section{Certifications \& Training}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AI Security \& Governance Certification}{Jan 2026}
+      {Securiti}{Securiti Education}
+      \resumeItemListStart
+        \resumeItem{Developed practical skills in Generative AI guardrails by mastering governance frameworks to secure model integration}
+        \resumeItem{Implemented risk strategies ensuring compliance with global AI safety laws}
+        \resumeItem{Applied safety measures (input filtering, sanitization) for secure agents}
+      \resumeItemListEnd
+
+
+    \resumeSubheading
+      {AI Agents Intensive Training with Google}{Nov 2025}
+      {Google}{Kaggle}
+      \resumeItemListStart
+        \resumeItem{Acquired expertise in agentic architecture (RAG, orchestration, tool-use) through Google-led labs}
+        \resumeItem{Built and deployed AI agents covering models, orchestration, memory, and evaluation}
+        \resumeItem{Deployed a functional agentic workflow for the final capstone project, earning a verified Kaggle achievement badge}
+      \resumeItemListEnd
+
+
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+
+    \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+        {\textbf{\href{https://project-cerberus-pi.vercel.app/}{Project Cerberus: The AI Iron Dome}} $|$ \emph{Python, FastAPI, Google Gemini API, AI-Assisted Dev}}{Nov 2025}
+        \resumeItemListStart
+        \resumeItem{Engineered a secure AI reverse proxy with a fail-closed architecture to mitigate prompt injection attacks}
+        \resumeItem{Implemented a 3-layer defense engine, detecting and blocking 50+ crafted jailbreak-style prompt patterns like DAN}
+        \resumeItem{Deployed threat detection pipelines using FastAPI to mitigate key OWASP LLM Top 10 data exfiltration risks}
+        \resumeItemListEnd
+
+    \resumeProjectHeading
+        {\textbf{\href{facetrack-smart-ai-attendance.vercel.app}{ Attend AI: Smart Attendance System}} $|$ \emph{React, Django REST, MySQL, face-api.js}}{Jan 2026}
+        \resumeItemListStart
+        \resumeItem{Developed a full-stack attendance system integrating browser-based face recognition with a Django REST backend}
+        \resumeItem{Designed RESTful APIs, database schema, and timetable-based workflows to automate attendance tracking}
+        \resumeItem{Led system architecture, debugging, and feature development using AI-assisted tools to accelerate development cycles}
+        \resumeItemListEnd
+
+      \resumeProjectHeading
+        {\textbf{\href{https://cybersecuritylabs.vercel.app/project/VaultGuard}{Password Security Tool}} $|$ \emph{Python, Cryptography, Regex}}{Sep 2025}
+        \resumeItemListStart
+        \resumeItem{Developed a password analyzer that calculates a rule-based 0-100 strength score based on randomness and complexity}
+        \resumeItem{Built a secure password generator using Python's secrets module to ensure strong, unpredictable credentials}
+        \resumeItem{Integrated a simulated breach detection system to demonstrate real-world attacks exploit compromised credentials}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+    
+
+
+
+%-----------PUBLICATIONS / PATENTS-----------
+\section{Publications \& Patents}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Smart IoT Cookware System}{May 2025}
+      {Patent Application Number: 202511048523 }{Patent Filed}
+      \resumeItemListStart
+        \resumeItem{Architected an IoT induction system using a 10x10 electromagnet grid for pixel-level thermal control}
+        \resumeItem{Designed event-driven logic processing real-time infrared data, reducing theoretical energy waste by 40\%}
+        \resumeItem{Specified hardware fail-safes and logic gates for immediate cutoff when temperatures exceed 250\textdegree C}
+      \resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Lovely Professional University}{Aug 2023 -- Present}
+      {B.Tech in Computer Science \& Engineering (Cybersecurity)}{Punjab, India}
+      \resumeItemListStart
+        \resumeItem{Current CGPA: 7.6}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Kendriya Vidyalaya Keltron Nagar}{2021 -- 2023}
+      {Secondary (X) -- 77\% $|$ Senior Secondary (XII) -- 80\%}{Kerala, India}
+
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+
+\end{document}
