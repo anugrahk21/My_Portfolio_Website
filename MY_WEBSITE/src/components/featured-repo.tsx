@@ -180,9 +180,14 @@ export const FeaturedRepos: React.FC<FeaturedReposProps> = ({
   loading = false,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const sortedRepos = [...repositories].sort(
-    (a, b) => b.stargazers_count - a.stargazers_count,
-  );
+  const sortedRepos = [...repositories].sort((a, b) => {
+    // Pin highlighted repos to the top
+    if (a.highlight && !b.highlight) return -1;
+    if (!a.highlight && b.highlight) return 1;
+    
+    // Fallback to sorting by stars
+    return b.stargazers_count - a.stargazers_count;
+  });
 
   // Only show 2 repositories by default
   const visibleRepos = showAll ? sortedRepos : sortedRepos.slice(0, 2);
