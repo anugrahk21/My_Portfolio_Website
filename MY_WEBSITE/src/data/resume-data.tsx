@@ -5,18 +5,19 @@ export const RESUME_DATA = {
   name: "Anugrah K",
   initials: "AK",
   location: "Punjab, India",
-  about: "Cybersecurity Student & AI Enthusiast",
+  about: "AI-Augmented Developer | Secure AI Workflows & Backend Systems",
   summary:
-    "Cybersecurity student with a passion for AI applications in security. Focused on web app security, penetration testing, and building AI-powered tools. Currently pursuing B.Tech in Computer Science & Engineering (Cybersecurity). Patent holder (Pending) in IoT automation with deep expertise in building secure AI agents, RAG systems, and exploring the intersection of Generative AI and digital security, AI agents, and research in sustainable technology.",
-  // avatarUrl: "https://anugrah.com/anugrah.jpg",
+    "AI-augmented developer with a strong foundation in secure AI workflows, backend system design, and cybersecurity. Experienced in building full-stack and middleware applications integrating large language models, computer vision, structured APIs, and security-focused workflows, with demonstrated innovation through production-style projects and a filed patent.",
   avatarUrl: "/anugrah.webp",
   personalWebsiteUrl: "https://anugrahk.vercel.app",
   resumeUrl: "/Anugrah_Main_CV.pdf",
   extendedBio: `
   
-## My Journey in Cybersecurity and AI
+## My Journey in AI and Cyber Security
 
-My interest in cybersecurity began when I realized how critical digital security is in our increasingly connected world. As I progressed through my B.Tech in Computer Science & Engineering with a specialization in Cybersecurity, I found myself naturally drawn to the intersection of security and artificial intelligence.
+
+
+My interest in ai and cyber security began when I realized how critical digital security is in our increasingly connected world. As I progressed through my B.Tech in Computer Science & Engineering with a specialization in Cybersecurity, I found myself naturally drawn to the intersection of security and artificial intelligence.
 
 ### Security-First Mindset
 
@@ -105,7 +106,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       start: "Jan 2026",
       end: "Jan 2026",
       description:
-        "Formalized expertise in Generative AI guardrails by mastering governance frameworks to secure model integration. Implemented risk strategies ensuring compliance with global AI safety laws. Applied safety measures (input filtering, sanitization) for secure agents.",
+        "Developed practical skills in Generative AI guardrails by mastering governance frameworks to secure model integration. Implemented risk strategies ensuring compliance with global AI safety laws. Applied safety measures (input filtering, sanitization) for secure agents.",
     },
     {
       company: "Google Kaggle",
@@ -129,11 +130,11 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     },
   ],
   skills: [
-    "Languages: Python, C/C++, Java, SQL, HTML, CSS, JavaScript",
+    "Languages & Databases: Python, C/C++, Java, SQL",
     "Security Tools: Burp Suite, Wireshark, Nmap, Metasploitable",
-    "Frameworks & Platforms: Linux, Git, VMWare/VirtualBox, VS Code, Flask, FastAPI",
+    "Frameworks & Platforms: Linux, Git, VMWare/VirtualBox, VS Code, FastAPI",
     "AI & GenAI: Prompt Engineering, LLM Integration (Gemini API), AI-Assisted Development, AI Safety & Guardrails",
-    "Core Areas: Web App Security, Network Security, Penetration Testing, Research & Development",
+    "Core Areas: Generative AI, AI Security, Backend Development, Web App Security, Research & Development",
     "Soft Skills: Technical Documentation, Critical Thinking, Research & Analysis, Knowledge Sharing, Attention to Detail",
   ],
   open_source: [
@@ -155,13 +156,23 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       forks_count: 0,
     },
     {
-      name: "Cyber-Projects",
+      name: "VaultGuard",
       html_url: "https://github.com/anugrahk21/Cyber-Projects",
-      description: "Python tool for advanced password strength analysis with 0-100 point scoring system. Features secure password generation, entropy calculation, and simulated breach detection.",
-      topics: ["cybersecurity", "python", "password-security", "cryptography"],
+      description: "Python tool for advanced password strength analysis with 0-100 point scoring system. Features secure password generation, entropy calculation, and breach detection using HaveIBeenPwned API.",
+      topics: ["python", "password-security", "API integration"],
       stargazers_count: 0,
       forks_count: 0,
     },
+    {
+      name: "Attend-AI",
+      html_url: "https://github.com/anugrahk21/Smart-Attendance-System",
+      description: "Full-stack attendance system integrating browser-based face recognition with a Django REST backend. Features RESTful APIs, timetable-based workflows, and AI-assisted development.",
+      topics: ["react", "django", "mysql", "face-recognition", "full-stack"],
+      highlight: true,
+      stargazers_count: 0,
+      forks_count: 0,
+    },
+
     {
       name: "Personal_AI_Life_Coach",
       html_url: "https://github.com/anugrahk21/Personal_AI_Life_Coach",
@@ -201,15 +212,15 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
   ],
   publications: [
     {
-      title: "A Smart Cooking System",
+      title: "Smart IoT Cookware System",
       description:
-        "Patent application for an IoT-assisted cooking workflow system. Completed system architecture and control logic with safety, timing, and alert mechanisms using event-driven design. Prepared prototyping plan for sensor integration and device orchestration.",
-      publisher: "Patent Application - Patent Pending",
+        "Architected an IoT induction system using a 10×10 electromagnet grid for pixel-level thermal control. Designed event-driven logic processing real-time infrared data, reducing theoretical energy waste by 40%. Specified hardware fail-safes and logic gates for immediate cutoff when temperatures exceed 250°C.",
+      publisher: "Patent Application No. 202511048523 — Patent Pending",
       date: "Filed: May 2025",
       status: "Patent Pending",
       websiteUrl: "",
       resourceUrl: "",
-      citation: "Patent Application Filed",
+      citation: "Patent Application No. 202511048523",
       tags: [
         "IoT",
         "Smart Home",

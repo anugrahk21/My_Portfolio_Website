@@ -78,11 +78,8 @@ export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
         <div className="mt-2 flex flex-wrap gap-1">
           {repo.language && (
             <Badge
-              className={cn(
-                "px-1.5 py-0.5 text-[10px]",
-                repo.featured &&
-                "bg-primary/20 text-primary hover:bg-primary/30",
-              )}
+              className="px-1.5 py-0.5 text-[10px]"
+              variant="secondary"
             >
               {repo.language}
             </Badge>
@@ -147,11 +144,8 @@ export const FeaturedRepo: React.FC<FeaturedRepoProps> = ({ repo, index }) => {
               <div className="mt-2 flex flex-wrap gap-1">
                 {repo.language && (
                   <Badge
-                    className={cn(
-                      "px-1.5 py-0.5 text-[10px]",
-                      repo.featured &&
-                      "bg-primary/20 text-primary hover:bg-primary/30",
-                    )}
+                    className="px-1.5 py-0.5 text-[10px]"
+                    variant="secondary"
                   >
                     {repo.language}
                   </Badge>

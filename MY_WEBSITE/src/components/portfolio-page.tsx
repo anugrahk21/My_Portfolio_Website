@@ -226,8 +226,8 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                             </h2>
                             <IconTimeline
                                 items={RESUME_DATA.publications.map(pub => ({
-                                    company: pub.publisher.split("|")[0].trim(),
-                                    title: pub.title,
+                                    company: pub.title,
+                                    title: pub.publisher.split("|")[0].trim(),
                                     description: pub.description,
                                     start: pub.date,
                                     link: pub.websiteUrl || "#",
