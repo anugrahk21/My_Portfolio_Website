@@ -61,7 +61,7 @@ export const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
     <LinkWrapper>
       <Card
         className={cn(
-          "group flex h-full flex-col overflow-hidden border border-muted transition-all duration-300 hover:border-primary/30 hover:shadow-md",
+          "group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-md dark:border-white/5 dark:bg-black/20 dark:hover:border-white/10",
           isFeatured && "md:col-span-2 lg:col-span-2",
         )}
       >
@@ -129,7 +129,6 @@ export const BlogGrid = ({ posts, featuredCount = 1 }: BlogGridProps) => {
       {featuredPosts.map((post) => (
         <motion.div
           key={post.slug}
-          whileHover={{ y: -5, transition: { duration: 0.2 } }}
           className="h-full md:col-span-2 lg:col-span-2"
         >
           <BlogCard post={post} variant="featured" />
@@ -138,7 +137,6 @@ export const BlogGrid = ({ posts, featuredCount = 1 }: BlogGridProps) => {
       {regularPosts.map((post) => (
         <motion.div
           key={post.slug}
-          whileHover={{ y: -5, transition: { duration: 0.2 } }}
           className="h-full"
         >
           <BlogCard post={post} />

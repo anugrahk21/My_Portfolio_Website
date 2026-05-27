@@ -1,98 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { motion } from "motion/react";
+import { ShieldAlert, BrainCircuit, Lightbulb, TrendingUp, LucideIcon } from "lucide-react";
 import { RESUME_DATA } from "@/data/resume-data";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import { motion, AnimatePresence } from "motion/react";
 
-// Styles for markdown content
-const markdownStyles = {
-  container: "prose prose-zinc dark:prose-invert max-w-none overflow-y-auto",
-  h1: "text-2xl font-bold mb-4 border-b pb-2 text-zinc-800 dark:text-zinc-200",
-  h2: "text-xl font-bold mt-6 mb-3 text-zinc-800 dark:text-zinc-200",
-  h3: "text-lg font-semibold mt-5 mb-2 text-zinc-800 dark:text-zinc-200",
-  p: "mb-4 text-zinc-600 dark:text-zinc-400",
-  ul: "list-disc pl-5 mb-4 text-zinc-600 dark:text-zinc-400",
-  li: "mb-1",
-  strong: "font-bold text-zinc-800 dark:text-zinc-300",
-  a: "text-blue-500 hover:underline",
-};
-
-// Custom components for styling markdown
-const components = {
-  h1: ({ node, ...props }: any) => (
-    <h1 className={markdownStyles.h1} {...props} />
-  ),
-  h2: ({ node, ...props }: any) => (
-    <h2 className={markdownStyles.h2} {...props} />
-  ),
-  h3: ({ node, ...props }: any) => (
-    <h3 className={markdownStyles.h3} {...props} />
-  ),
-  p: ({ node, ...props }: any) => <p className={markdownStyles.p} {...props} />,
-  ul: ({ node, ...props }: any) => (
-    <ul className={markdownStyles.ul} {...props} />
-  ),
-  li: ({ node, ...props }: any) => (
-    <li className={markdownStyles.li} {...props} />
-  ),
-  strong: ({ node, ...props }: any) => (
-    <strong className={markdownStyles.strong} {...props} />
-  ),
-  a: ({ node, href, ...props }: any) => (
-    <a
-      href={href}
-      className={markdownStyles.a}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    />
-  ),
+const iconMap: Record<string, LucideIcon> = {
+  ShieldAlert,
+  BrainCircuit,
+  Lightbulb,
+  TrendingUp
 };
 
 export const AboutMeMorph = () => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
-
   return (
-    <div className="relative">
-      <Button
-        className="flex h-8 items-center gap-2"
-        variant="outline"
-        onClick={toggleExpanded}
-      >
-        <FileText className="size-4" />
-        <span>{expanded ? "Show Less" : "More About Me"}</span>
-      </Button>
-
-      <AnimatePresence>
-        {expanded && (
+    <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-2">
+      {RESUME_DATA.aboutMeHighlights.map((item, idx) => {
+        const Icon = iconMap[item.icon] || Lightbulb;
+        
+        return (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="mt-6 overflow-hidden rounded-lg bg-white/5 p-4 backdrop-blur-sm"
+            key={item.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1, duration: 0.4 }}
+            className="h-full"
           >
-            <div className={markdownStyles.container}>
-              <ReactMarkdown
-                components={components}
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-              >
-                {RESUME_DATA.extendedBio}
-              </ReactMarkdown>
+            <div className="group relative h-full overflow-hidden rounded-xl border border-zinc-200 bg-white/50 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-zinc-300 dark:border-white/5 dark:bg-black/20 dark:hover:border-white/10 shadow-sm">
+            {/* Subtle hover gradient blob */}
+            <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/20 blur-3xl transition-opacity opacity-0 group-hover:opacity-100" />
+            
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                {item.title}
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {item.description}
+              </p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </motion.div>
+        );
+      })}
     </div>
   );
 };

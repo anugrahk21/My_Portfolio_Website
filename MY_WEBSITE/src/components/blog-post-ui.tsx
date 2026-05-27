@@ -44,8 +44,13 @@ export function BlogPostUI({
   })();
 
   return (
-    <div className="container mx-auto mb-16 mt-12 max-w-4xl px-4 pb-24">
-      <div className="mb-12">
+    <>
+      {/* Background decorative blobs */}
+      <div className="pointer-events-none fixed left-0 top-0 z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[100px] dark:bg-indigo-500/5" />
+      <div className="pointer-events-none fixed right-0 top-[20%] z-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-purple-500/10 blur-[100px] dark:bg-purple-500/5" />
+
+      <div className="container relative z-10 mx-auto mb-16 mt-12 max-w-4xl px-4 pb-24">
+        <div className="mb-12">
         <HoverNavbar
           navItems={[
             { name: "Back", icon: <ArrowLeftIcon className="h-5 w-5" />, href: "/blog" },
@@ -56,7 +61,7 @@ export function BlogPostUI({
         />
       </div>
 
-      <article>
+      <article className="relative overflow-hidden rounded-3xl border border-zinc-200 bg-white/40 p-6 sm:p-10 backdrop-blur-xl transition-all dark:border-white/10 dark:bg-black/20 shadow-sm">
         <header className="mb-12">
           <Link
             href="/blog"
@@ -137,6 +142,7 @@ export function BlogPostUI({
           </Link>
         </div>
       </article>
-    </div>
+      </div>
+    </>
   );
 }

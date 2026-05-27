@@ -20,6 +20,10 @@ export function BlogIndexUI({ posts }: BlogIndexUIProps) {
 
   return (
     <>
+      {/* Background decorative blobs */}
+      <div className="pointer-events-none fixed left-0 top-0 z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[100px] dark:bg-indigo-500/5" />
+      <div className="pointer-events-none fixed right-0 top-[20%] z-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-purple-500/10 blur-[100px] dark:bg-purple-500/5" />
+
       {/* Name Animation Overlay - Same as homepage */}
       <NameAnimationOverlay
         name={RESUME_DATA.name}

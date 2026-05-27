@@ -1,113 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Badge } from "./ui/badge";
-import { Card } from "./ui/card";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { motion } from "motion/react";
 import {
   Code2Icon, ServerIcon, DatabaseIcon, CloudIcon,
   CodeIcon, BrainCircuitIcon, LibraryIcon,
-  PackageIcon, MonitorIcon, BarChart3Icon, LayoutIcon,
+  PackageIcon, LayoutIcon,
   ApertureIcon, GaugeIcon, TerminalIcon,
-  BoxIcon, CircuitBoardIcon, LucideIcon
+  BoxIcon, CircuitBoardIcon, ShieldIcon,
+  CpuIcon, BlocksIcon, UsersIcon
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // Map of category names to their corresponding icons
-const categoryIcons: Record<string, React.ReactNode> = {
-  "AI/ML/DL": <BrainCircuitIcon className="h-4 w-4" />,
-  "Python Libraries": <LibraryIcon className="h-4 w-4" />,
-  "Web Frameworks": <LayoutIcon className="h-4 w-4" />,
-  "Cloud": <CloudIcon className="h-4 w-4" />,
-  "Big Data": <BarChart3Icon className="h-4 w-4" />,
-  "Databases": <DatabaseIcon className="h-4 w-4" />,
-  "Languages": <CodeIcon className="h-4 w-4" />,
-  // Default icon for any other categories
-  "Other": <ApertureIcon className="h-4 w-4" />
+const categoryIcons: Record<string, React.ElementType> = {
+  "Languages & Databases": DatabaseIcon,
+  "Security Tools": ShieldIcon,
+  "Frameworks & Platforms": BlocksIcon,
+  "AI & GenAI": BrainCircuitIcon,
+  "Core Areas": CpuIcon,
+  "Soft Skills": UsersIcon,
+  "Other": ApertureIcon
 };
 
 // Map skill keywords to minimal black and white icons
-const getSkillIcon = (skill: string): React.ReactNode => {
+const getSkillIcon = (skill: string) => {
   const lowerSkill = skill.toLowerCase();
 
-  if (lowerSkill.includes('python')) {
+  if (lowerSkill.includes('python') || lowerSkill.includes('c++') || lowerSkill.includes('java')) {
     return <TerminalIcon className="h-3.5 w-3.5" />;
   } else if (lowerSkill.includes('react') || lowerSkill.includes('vue')) {
     return <CodeIcon className="h-3.5 w-3.5" />;
   } else if (lowerSkill.includes('node') || lowerSkill.includes('express')) {
     return <ServerIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('docker') || lowerSkill.includes('kubernetes')) {
+  } else if (lowerSkill.includes('linux') || lowerSkill.includes('git')) {
     return <BoxIcon className="h-3.5 w-3.5" />;
   } else if (lowerSkill.includes('aws') || lowerSkill.includes('azure') || lowerSkill.includes('cloud')) {
     return <CloudIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('ml') || lowerSkill.includes('ai') || lowerSkill.includes('pytorch') || lowerSkill.includes('tensorflow')) {
+  } else if (lowerSkill.includes('ai') || lowerSkill.includes('llm') || lowerSkill.includes('prompt')) {
     return <BrainCircuitIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('sql') || lowerSkill.includes('mongo') || lowerSkill.includes('database')) {
+  } else if (lowerSkill.includes('sql') || lowerSkill.includes('database')) {
     return <DatabaseIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('css') || lowerSkill.includes('html')) {
-    return <LayoutIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('typescript') || lowerSkill.includes('javascript')) {
-    return <Code2Icon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('api') || lowerSkill.includes('rest')) {
+  } else if (lowerSkill.includes('security') || lowerSkill.includes('nmap') || lowerSkill.includes('burp')) {
+    return <ShieldIcon className="h-3.5 w-3.5" />;
+  } else if (lowerSkill.includes('api') || lowerSkill.includes('fastapi')) {
     return <ServerIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('transformers') || lowerSkill.includes('hugging')) {
+  } else if (lowerSkill.includes('research') || lowerSkill.includes('analysis')) {
     return <CircuitBoardIcon className="h-3.5 w-3.5" />;
-  } else if (lowerSkill.includes('fastapi') || lowerSkill.includes('flask') || lowerSkill.includes('django')) {
-    return <PackageIcon className="h-3.5 w-3.5" />;
   }
 
   // Default
   return <GaugeIcon className="h-3.5 w-3.5" />;
 };
 
-interface SkillCategoryProps {
-  name: string;
-  skills: readonly string[] | string[];
-  icon?: React.ReactNode;
-  isActive: boolean;
-  onClick: () => void;
-  count: number;
-}
-
-const SkillCategory: React.FC<SkillCategoryProps> = ({ name, skills, icon, isActive, onClick, count }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "text-xs px-3 py-1.5 rounded-full transition-all duration-300 font-medium flex items-center gap-1.5", // Reduced text size and padding
-        isActive
-          ? "bg-primary text-primary-foreground shadow-md"
-          : "bg-muted hover:bg-muted/80"
-      )}
-    >
-      <div className="flex items-center gap-1">
-        {icon && <span className="flex-shrink-0">{icon}</span>}
-        <span>{name}</span>
-      </div>
-      <span className={cn(
-        "inline-flex items-center justify-center rounded-full text-xs w-4 h-4", // Smaller counter circle
-        isActive
-          ? "bg-primary-foreground text-primary"
-          : "bg-background text-muted-foreground"
-      )}>
-        {count}
-      </span>
-    </button>
-  );
-};
-
-// Extract category from skill text, assuming format like "AI/ML/DL: PyTorch, Transformers..."
-const extractCategory = (skill: string): { category: string; skills: string } => {
+const extractCategory = (skill: string): { category: string; skills: string[] } => {
   const parts = skill.split(":");
   if (parts.length > 1) {
     return {
       category: parts[0].trim(),
-      skills: parts[1].trim()
+      skills: parts[1].split(',').map(s => s.trim())
     };
   }
   return {
     category: "Other",
-    skills: skill
+    skills: [skill]
   };
 };
 
@@ -116,122 +72,61 @@ interface InteractiveSkillsProps {
 }
 
 export const InteractiveSkills: React.FC<InteractiveSkillsProps> = ({ skills }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
-
-  // Fixed type errors by explicitly defining the accumulator type and using the correct reduce pattern
   const categorizedSkills = skills.reduce<Record<string, string[]>>((acc, skill) => {
-    const { category, skills } = extractCategory(skill);
+    const { category, skills: skillList } = extractCategory(skill);
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(skills);
+    acc[category].push(...skillList);
     return acc;
-  }, {} as Record<string, string[]>);
+  }, {});
 
   const categories = Object.keys(categorizedSkills);
 
-  const handleCategoryClick = (category: string) => {
-    setSelectedCategory(selectedCategory === category ? null : category);
-    setSelectedSkill(null); // Reset selected skill when changing category
-  };
-
-  const handleSkillClick = (skill: string) => {
-    setSelectedSkill(selectedSkill === skill ? null : skill);
-  };
-
-  // Function to get all skills from all categories with proper typing
-  const getAllSkills = (): string[] => {
-    return Object.values(categorizedSkills).flatMap((categorySkills: string[]) =>
-      categorySkills.flatMap((skillString: string) =>
-        skillString.split(',').map((skill: string) => skill.trim())
-      )
-    );
-  };
-
-  // Function to get skills from a specific category with proper typing
-  const getSkillsFromCategory = (category: string): string[] => {
-    const categorySkills = categorizedSkills[category as keyof typeof categorizedSkills];
-    return categorySkills?.flatMap((skillString: string) =>
-      skillString.split(',').map((skill: string) => skill.trim())
-    ) || [];
-  };
-
-  const currentSkills = selectedCategory ? getSkillsFromCategory(selectedCategory) : getAllSkills();
-
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2 mb-4 justify-start">
-        <SkillCategory
-          key="all"
-          name="All Skills"
-          skills={[]}
-          icon={<ApertureIcon className="h-4 w-4" />}
-          isActive={selectedCategory === null}
-          onClick={() => setSelectedCategory(null)}
-          count={getAllSkills().length}
-        />
-        {categories.map((category) => (
-          <SkillCategory
-            key={category}
-            name={category}
-            skills={categorizedSkills[category]}
-            icon={categoryIcons[category] || categoryIcons["Other"]}
-            isActive={selectedCategory === category}
-            onClick={() => handleCategoryClick(category)}
-            count={getSkillsFromCategory(category).length}
-          />
-        ))}
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {categories.map((category, idx) => {
+        const Icon = categoryIcons[category] || categoryIcons["Other"];
+        const categorySkills = categorizedSkills[category];
 
-      <Card className="p-4 border border-muted bg-muted/5 rounded-xl shadow-sm">
-        <AnimatePresence mode="wait">
+        return (
           <motion.div
-            key={selectedCategory || 'all'}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-wrap gap-2 justify-center"
+            key={category}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1, duration: 0.4 }}
+            className="h-full"
           >
-            {currentSkills.map((skill, index) => (
-              <motion.div
-                key={`${skill}-${index}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{
-                  opacity: 1,
-                  scale: selectedSkill === skill ? 1.05 : 1,
-                  y: 0
-                }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                transition={{
-                  delay: index * 0.03,
-                  duration: 0.2
-                }}
-                onClick={() => handleSkillClick(skill)}
-              >
-                <Badge
-                  variant={selectedSkill === skill ? "default" : "secondary"}
-                  className={cn(
-                    "py-1 px-2 text-xs transition-all cursor-pointer", // Reduced text size and padding
-                    "hover:bg-primary hover:text-primary-foreground",
-                    "flex items-center gap-1",
-                    selectedSkill === skill && "bg-primary/90 text-primary-foreground shadow"
-                  )}
-                >
-                  {getSkillIcon(skill)}
-                  {skill}
-                </Badge>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Skills count indicator */}
-        <div className="mt-4 text-center text-xs text-muted-foreground">
-          Showing {currentSkills.length} {selectedCategory ? `skills in ${selectedCategory}` : 'total skills'}
-        </div>
-      </Card>
+            <div className="group relative h-full overflow-hidden rounded-xl border border-zinc-200 bg-white/40 p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-zinc-300 dark:border-white/5 dark:bg-black/20 dark:hover:border-white/10 shadow-sm">
+            {/* Subtle hover gradient blob */}
+            <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/10 blur-3xl transition-opacity opacity-0 group-hover:opacity-100" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4 border-b border-zinc-200/50 dark:border-white/10 pb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="h-4 w-4" />
+                </div>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">
+                  {category}
+                </h3>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {categorySkills.map((skill, sIdx) => (
+                  <div
+                    key={`${skill}-${sIdx}`}
+                    className="flex items-center gap-1.5 rounded-md bg-zinc-100/50 dark:bg-white/5 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200/50 dark:border-white/5 transition-colors hover:bg-zinc-200 dark:hover:bg-white/10"
+                  >
+                    {getSkillIcon(skill)}
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+        );
+      })}
     </div>
   );
 };

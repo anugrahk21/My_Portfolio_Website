@@ -7,66 +7,34 @@ export const RESUME_DATA = {
   location: "Punjab, India",
   about: "AI-Augmented Developer | Secure AI Workflows & Backend Systems",
   summary:
-    "AI-augmented developer with a strong foundation in secure AI workflows, backend system design, and cybersecurity. Experienced in building full-stack and middleware applications integrating large language models, computer vision, structured APIs, and security-focused workflows, with demonstrated innovation through production-style projects and a filed patent.",
+    "AI-augmented developer with a strong foundation in secure AI workflows, backend system design, and cybersecurity. Experienced in building full-stack and middleware applications integrating large language models, computer vision, structured APIs, and security-focused workflows.",
   avatarUrl: "/anugrah.webp",
   personalWebsiteUrl: "https://anugrahk.vercel.app",
   resumeUrl: "/Anugrah_Main_CV.pdf",
-  extendedBio: `
   
-## My Journey in AI and Cyber Security
+  aboutMeHighlights: [
+    {
+      title: "Security-First",
+      description: "Building robust foundations in network security, threat analysis, and penetration testing.",
+      icon: "ShieldAlert"
+    },
+    {
+      title: "The AI Connection",
+      description: "Exploring how AI can detect threats, analyze patterns, and predict breaches.",
+      icon: "BrainCircuit"
+    },
+    {
+      title: "Innovation Focus",
+      description: "Bridging software and hardware with patents like the Smart IoT Cookware System.",
+      icon: "Lightbulb"
+    },
+    {
+      title: "Continuous Growth",
+      description: "Committed to evolving with the threat landscape through ongoing industry certifications.",
+      icon: "TrendingUp"
+    }
+  ],
 
-
-
-My interest in ai and cyber security began when I realized how critical digital security is in our increasingly connected world. As I progressed through my B.Tech in Computer Science & Engineering with a specialization in Cybersecurity, I found myself naturally drawn to the intersection of security and artificial intelligence.
-
-### Security-First Mindset
-
-Cybersecurity isn't just about tools and techniques—it's a mindset. Through my coursework and the Google Cybersecurity Professional Certificate program, I've developed a strong foundation in network security, threat analysis, and penetration testing. Working with tools like Burp Suite, Wireshark, and Nmap has given me hands-on experience in identifying and addressing vulnerabilities.
-
-### The AI Connection
-
-What excites me most is how AI can revolutionize cybersecurity. My participation in Google's AI Agents Intensive Training opened my eyes to the potential of intelligent systems. I've been exploring how AI can detect threats, analyze patterns, and even predict security breaches before they happen.
-
-### Building Practical Solutions
-
-I believe in learning by doing. My projects reflect this philosophy.
-
-### Research and Innovation
-
-Beyond security, I'm passionate about innovation and technology. My research on bioreceptive concrete panels for Indian climates combines environmental consciousness with technical innovation. I've also filed a patent for a smart cooking system, demonstrating my interest in IoT and practical automation.
-
-## Technical Philosophy
-
-My approach to security and development:
-
-1. **Defense in Depth**: Multiple layers of security are always better than one
-2. **Continuous Learning**: The threat landscape evolves daily—so should I
-3. **Ethical Practice**: Security knowledge comes with responsibility
-4. **Practical Application**: Theory is important, but real-world implementation is where learning happens
-
-## Current Focus
-
-I'm currently deepening my knowledge in:
-
-- Web application security and penetration testing
-- AI safety and guardrails for LLM applications
-- Network security protocols and threat analysis
-- Secure coding practices and vulnerability assessment
-
-## Building for the Future
-
-I believe technology should be secure, accessible, and beneficial to society. Whether it's developing security tools, researching sustainable solutions, or creating AI applications with built-in safety measures, my goal is to contribute positively to the digital ecosystem.
-
-## Let's Connect
-
-I'm interested in opportunities related to:
-- Cybersecurity roles (especially in web app security and penetration testing)
-- AI security and safety research
-- Collaboration on security tools and frameworks
-- Research in sustainable technology
-
-Feel free to reach out if you want to discuss cybersecurity, AI applications, or innovative projects!
-`,
   contact: {
     email: "anugrah.k910@gmail.com",
     tel: "+91 95396 94902",
@@ -83,20 +51,27 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       },
     ],
   },
+  
   education: [
     {
       school: "Lovely Professional University",
       degree: "B.Tech in Computer Science & Engineering (Cybersecurity)",
       start: "2023",
       end: "Present",
+      highlights: [
+        { text: "Specialization in Cybersecurity", icon: "Shield" },
+        { text: "Core CS fundamentals & practical labs", icon: "TerminalSquare" }
+      ]
     },
     {
       school: "Kendriya Vidyalaya Keltron Nagar",
       degree: "Secondary (X) | Senior Secondary (XII)",
       start: "2021",
       end: "2023",
+      highlights: []
     },
   ],
+  
   work: [
     {
       company: "Securiti Education",
@@ -105,8 +80,12 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       title: "AI Security & Governance Certification",
       start: "Jan 2026",
       end: "Jan 2026",
-      description:
-        "Developed practical skills in Generative AI guardrails by mastering governance frameworks to secure model integration. Implemented risk strategies ensuring compliance with global AI safety laws. Applied safety measures (input filtering, sanitization) for secure agents.",
+      description: "Developed practical skills in Generative AI guardrails by mastering governance frameworks to secure model integration.",
+      highlights: [
+        { text: "Mastered governance frameworks for secure model integration", icon: "Building2" },
+        { text: "Implemented risk strategies for global AI safety compliance", icon: "Globe" },
+        { text: "Applied input filtering and sanitization for secure agents", icon: "Lock" }
+      ]
     },
     {
       company: "Google Kaggle",
@@ -115,8 +94,12 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       title: "AI Agents Intensive Training",
       start: "Nov 2025",
       end: "Nov 2025",
-      description:
-        "Acquired expertise in agentic architecture (RAG, orchestration, tool-use) through Google-led labs. Built and deployed AI agents covering models, orchestration, memory, and evaluation. Deployed a functional agentic workflow for the final capstone project, earning a verified Kaggle achievement badge.",
+      description: "Acquired expertise in agentic architecture (RAG, orchestration, tool-use) through Google-led labs.",
+      highlights: [
+        { text: "Built and deployed AI agents with orchestration & memory", icon: "Cpu" },
+        { text: "Mastered RAG, tool-use, and agent evaluation", icon: "Wrench" },
+        { text: "Deployed functional workflow earning Kaggle achievement", icon: "Award" }
+      ]
     },
     {
       company: "Google Coursera",
@@ -125,10 +108,15 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       title: "Google Cybersecurity Professional Certificate",
       start: "Oct 2025",
       end: "Present",
-      description:
-        "Mastering threat detection and incident response by conducting hands-on labs with Linux. Analyzing patterns to identify vulnerabilities using industry-standard tools. Building practical experience for industry-recognized cybersecurity skills.",
+      description: "Mastering threat detection and incident response by conducting hands-on labs with Linux.",
+      highlights: [
+        { text: "Conducting hands-on labs with Linux environments", icon: "Terminal" },
+        { text: "Analyzing patterns to identify vulnerabilities", icon: "ScanSearch" },
+        { text: "Mastering threat detection and incident response", icon: "Siren" }
+      ]
     },
   ],
+  
   skills: [
     "Languages & Databases: Python, C/C++, Java, SQL",
     "Security Tools: Burp Suite, Wireshark, Nmap, Metasploitable",
@@ -137,6 +125,7 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
     "Core Areas: Generative AI, AI Security, Backend Development, Web App Security, Research & Development",
     "Soft Skills: Technical Documentation, Critical Thinking, Research & Analysis, Knowledge Sharing, Attention to Detail",
   ],
+  
   open_source: [
     {
       name: "Project-Cerberus",
@@ -172,7 +161,6 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       stargazers_count: 0,
       forks_count: 0,
     },
-
     {
       name: "Personal_AI_Life_Coach",
       html_url: "https://github.com/anugrahk21/Personal_AI_Life_Coach",
@@ -198,86 +186,80 @@ Feel free to reach out if you want to discuss cybersecurity, AI applications, or
       forks_count: 0,
     },
   ],
-  extraCurricular: [
-    {
-      title: "AI Agents Intensive Training Capstone Project",
-      description:
-        "Completed capstone project for Google's 5-day AI Agents Intensive Training, earning a Kaggle badge. Built and deployed AI agents covering models, orchestration, memory, and evaluation.",
-    },
-    {
-      title: "Cybersecurity Student",
-      description:
-        "Actively pursuing the Google Cybersecurity Professional Certificate while completing B.Tech in Computer Science & Engineering (Cybersecurity) at Lovely Professional University.",
-    },
-  ],
+  
   publications: [
     {
       title: "Smart IoT Cookware System",
-      description:
-        "Architected an IoT induction system using a 10×10 electromagnet grid for pixel-level thermal control. Designed event-driven logic processing real-time infrared data, reducing theoretical energy waste by 40%. Specified hardware fail-safes and logic gates for immediate cutoff when temperatures exceed 250°C.",
+      description: "Architected an IoT induction system using a 10×10 electromagnet grid for pixel-level thermal control.",
       publisher: "Patent Application No. 202511048523 — Patent Pending",
       date: "Filed: May 2025",
       status: "Patent Pending",
       websiteUrl: "",
       resourceUrl: "",
       citation: "Patent Application No. 202511048523",
-      tags: [
-        "IoT",
-        "Smart Home",
-        "Automation",
-        "Patent",
-      ],
+      tags: ["IoT", "Smart Home", "Automation", "Patent"],
       showLinks: false,
+      highlights: [
+        { text: "10×10 electromagnet grid for pixel-level thermal control", icon: "Grid3X3" },
+        { text: "Event-driven logic processing real-time infrared data", icon: "Cpu" },
+        { text: "Reduces theoretical energy waste by 40%", icon: "Leaf" },
+        { text: "Hardware fail-safes trigger cutoff at 250°C", icon: "ShieldAlert" }
+      ]
     },
     {
       title: "Bioreceptive Concrete Panels for Indian Climates",
-      description:
-        "Research manuscript focused on formulating concrete panels optimized for warm-humid conditions and monsoon variability in India. Validated design assumptions via literature review and outlined lab-scale formulation planning for porosity, moisture retention, and surface micro-topography.",
+      description: "Research manuscript focused on formulating concrete panels optimized for warm-humid conditions and monsoon variability in India.",
       publisher: "Target: Materials/Sustainable Built Environment",
       date: "2025",
       status: "In Progress",
       websiteUrl: "",
       resourceUrl: "",
       citation: "Manuscript in preparation - Prototyping next",
-      tags: [
-        "Sustainable Materials",
-        "Bioreceptive Design",
-        "Climate Adaptation",
-        "Civil Engineering",
-      ],
+      tags: ["Sustainable Materials", "Bioreceptive Design", "Climate Adaptation", "Civil Engineering"],
       showLinks: false,
+      highlights: [
+        { text: "Optimized for warm-humid conditions & monsoon variability", icon: "CloudRain" },
+        { text: "Validated design assumptions via literature review", icon: "BookOpenCheck" },
+        { text: "Lab-scale formulation for porosity and moisture retention", icon: "Droplets" }
+      ]
     }
   ],
+  
   achievements: [
     {
       title: "Certified in AI Security and Governance",
       date: "January 2026",
-      description: "Successfully completed securiti.ai's AI Security and Governance certification, covering AI security fundamentals, governance frameworks, and responsible AI practices.",
+      description: "Successfully completed securiti.ai's AI Security and Governance certification.",
       tags: ["AI", "Security", "Governance"],
-      link: {
-        label: "View Certificate",
-        href: "https://www.kaggle.com/",
-      },
+      link: { label: "View Certificate", href: "https://www.kaggle.com/" },
+      highlights: [
+        { text: "Covered AI security fundamentals & governance frameworks", icon: "ShieldCheck" },
+        { text: "Mastered responsible AI practices", icon: "Scale" }
+      ]
     },
     {
       title: "Completed AI Agents Intensive Training",
       date: "November 2025",
-      description:
-        "Successfully completed Google's AI Agents Intensive Training, a rigorous 5-day program led by ML researchers and engineers. Earned Kaggle badge for capstone project.",
+      description: "Successfully completed Google's AI Agents Intensive Training, a rigorous 5-day program.",
       tags: ["AI", "Google", "Training", "Kaggle"],
-      link: {
-        label: "View on Kaggle",
-        href: "https://www.kaggle.com/",
-      },
+      link: { label: "View on Kaggle", href: "https://www.kaggle.com/" },
+      highlights: [
+        { text: "5-day rigorous program led by ML researchers", icon: "GraduationCap" },
+        { text: "Earned Kaggle badge for capstone project", icon: "Medal" }
+      ]
     },
     {
       title: "Filed Patent for Smart Cooking System",
       date: "May 2025",
-      description:
-        "Filed patent application for an innovative IoT-assisted cooking workflow system featuring safety mechanisms, timing control, and event-driven architecture.",
+      description: "Filed patent application for an innovative IoT-assisted cooking workflow system.",
       tags: ["Patent", "IoT", "Innovation"],
+      highlights: [
+        { text: "IoT-assisted cooking workflow system", icon: "ChefHat" },
+        { text: "Safety mechanisms & timing control", icon: "Timer" }
+      ]
     },
   ],
+  
   blogs: [
     {
       slug: "from-idea-to-patent-smart-cooking-system",
