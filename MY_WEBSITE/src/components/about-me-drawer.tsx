@@ -99,7 +99,7 @@ export const AboutMeDrawer = () => {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >
-              {RESUME_DATA.extendedBio}
+              {RESUME_DATA.summary}
             </ReactMarkdown>
           </div>
           {/* <DrawerFooter>
