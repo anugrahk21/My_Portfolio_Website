@@ -11,18 +11,10 @@ export function IntrusionAlert() {
     const triggerAlert = (e: Event) => {
       e.preventDefault();
       setIsAlerting(true);
-
-      // Trigger vibration synchronously to bypass strict mobile browser policies
-      if (typeof navigator !== "undefined" && navigator.vibrate) {
-        navigator.vibrate([200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200]);
-      }
       
       // Auto dismiss after 2.5 seconds
       setTimeout(() => {
         setIsAlerting(false);
-        if (typeof navigator !== "undefined" && navigator.vibrate) {
-          navigator.vibrate(0);
-        }
       }, 2500);
     };
 
