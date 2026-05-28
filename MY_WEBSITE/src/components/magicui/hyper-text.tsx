@@ -340,7 +340,7 @@ export function NameAnimationOverlay({
                 </motion.div>
               )}
 
-              {(stage === 'kidding' || stage === 'done') && (
+              {stage === 'kidding' && (
                 <motion.div
                   key="kidding-screen"
                   initial={{ opacity: 0, scale: 0.95 }}
