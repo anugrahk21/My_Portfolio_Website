@@ -109,9 +109,9 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                                         </Button>
                                     ))}
                                     <Button variant="outline" className="h-9 rounded-full px-4 bg-zinc-100 hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/20 border-transparent shadow-none flex items-center gap-2" asChild>
-                                        <a href={RESUME_DATA.resumeUrl} target="_blank" rel="noopener noreferrer" download>
+                                        <a href={RESUME_DATA.resumeUrl} target="_blank" rel="noopener noreferrer">
                                             <FileDown className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
-                                            <span className="font-medium text-zinc-700 dark:text-zinc-300">Download CV</span>
+                                            <span className="font-medium text-zinc-700 dark:text-zinc-300">View CV</span>
                                         </a>
                                     </Button>
                                 </div>

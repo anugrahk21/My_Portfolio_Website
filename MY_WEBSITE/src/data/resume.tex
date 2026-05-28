@@ -1,8 +1,9 @@
 %-------------------------
 % Resume in Latex
-% Focused on AI, Cyber Security and development
+% Modified for AI, Cybersecurity & Development Student
 % By Anugrah K
-%-------------------------
+% License : MIT
+%------------------------
 
 \documentclass[letterpaper,10pt]{article}
 
@@ -48,8 +49,8 @@
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.10in}
 
 \urlstyle{same}
 
@@ -62,8 +63,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
 
 %-------------------------
 % Custom commands
@@ -74,11 +75,11 @@
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{2pt}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
@@ -89,10 +90,10 @@
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{2pt}\item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small#1 & #2 \\
+  \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
@@ -179,14 +180,6 @@
         \resumeItem{Deployed threat detection pipelines using FastAPI to mitigate key OWASP LLM Top 10 data exfiltration risks}
         \resumeItemListEnd
 
-    \resumeProjectHeading
-        {\textbf{\href{facetrack-smart-ai-attendance.vercel.app}{ Attend AI: Smart Attendance System}} $|$ \emph{React, Django REST, MySQL, face-api.js}}{Jan 2026}
-        \resumeItemListStart
-        \resumeItem{Developed a full-stack attendance system integrating browser-based face recognition with a Django REST backend}
-        \resumeItem{Designed RESTful APIs, database schema, and timetable-based workflows to automate attendance tracking}
-        \resumeItem{Led system architecture, debugging, and feature development using AI-assisted tools to accelerate development cycles}
-        \resumeItemListEnd
-
       \resumeProjectHeading
         {\textbf{\href{https://cybersecuritylabs.vercel.app/project/VaultGuard}{VaultGuard: Password Security Tool}} $|$ \emph{Python, API Integration, Regex, Secure Coding}}{Sep 2025}
         \resumeItemListStart
@@ -200,10 +193,18 @@
 
 
 
-%-----------PUBLICATIONS / PATENTS-----------
-\section{Publications \& Patents}
+%-----------ACHIEVEMENTS & RECOGNITION-----------
+\section{Achievements \& Recognition}
+\resumeSubHeadingListStart
 
-  \resumeSubHeadingListStart
+\resumeSubheading
+{NEP SAARTHI (National Education Policy Student Ambassador)}{May 2026}
+{University Grants Commission (UGC)}{Selected Representative}
+\resumeItemListStart
+\resumeItem{Selected as an official UGC NEP SAARTHI through university-level screening, representing the institution under NEP}
+\resumeItem{Appointed to support awareness and student engagement initiatives related to NEP 2020}
+\resumeItem{Selected to represent student participation in institutional NEP-related activities}
+\resumeItemListEnd
 
     \resumeSubheading
       {Smart IoT Cookware System}{May 2025}
@@ -224,16 +225,20 @@
 
     \resumeSubheading
       {Lovely Professional University}{Aug 2023 -- Present}
-      {B.Tech in Computer Science \& Engineering (Cybersecurity)}{Punjab, India}
+      {B.Tech in Computer Science \& Engineering}{Punjab, India}
       \resumeItemListStart
         \resumeItem{Current CGPA: 7.6}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Kendriya Vidyalaya Keltron Nagar}{2021 -- 2023}
-      {Secondary (X) -- 77\% $|$ Senior Secondary (XII) -- 80\%}{Kerala, India}
+  {Kendriya Vidyalaya Keltron Nagar}{2022 -- 2023}
+  {Senior Secondary (Class XII) -- 80\%}{Kerala, India}
 
-  \resumeSubHeadingListEnd
+\resumeSubheading
+  {Kendriya Vidyalaya Keltron Nagar}{2020 -- 2021}
+  {Secondary (Class X) -- 77\%}{Kerala, India}
+
+\resumeSubHeadingListEnd
 
 %-------------------------------------------
 

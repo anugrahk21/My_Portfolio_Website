@@ -10,8 +10,8 @@ export const RESUME_DATA = {
     "AI-augmented developer with a strong foundation in secure AI workflows, backend system design, and cybersecurity. Experienced in building full-stack and middleware applications integrating large language models, computer vision, structured APIs, and security-focused workflows.",
   avatarUrl: "/anugrah.webp",
   personalWebsiteUrl: "https://anugrahk.vercel.app",
-  resumeUrl: "/Anugrah_Main_CV.pdf",
-  
+  resumeUrl: "https://drive.google.com/file/d/1tFU-wifLQQId0RkihEEINWz6spVwfUKy/view?usp=sharing",
+
   aboutMeHighlights: [
     {
       title: "Security-First",
@@ -51,7 +51,7 @@ export const RESUME_DATA = {
       },
     ],
   },
-  
+
   education: [
     {
       school: "Lovely Professional University",
@@ -71,7 +71,7 @@ export const RESUME_DATA = {
       highlights: []
     },
   ],
-  
+
   work: [
     {
       company: "Securiti Education",
@@ -116,7 +116,7 @@ export const RESUME_DATA = {
       ]
     },
   ],
-  
+
   skills: [
     "Languages & Databases: Python, C/C++, Java, SQL",
     "Security Tools: Burp Suite, Wireshark, Nmap, Metasploitable",
@@ -125,7 +125,7 @@ export const RESUME_DATA = {
     "Core Areas: Generative AI, AI Security, Backend Development, Web App Security, Research & Development",
     "Soft Skills: Technical Documentation, Critical Thinking, Research & Analysis, Knowledge Sharing, Attention to Detail",
   ],
-  
+
   open_source: [
     {
       name: "Project-Cerberus",
@@ -186,7 +186,7 @@ export const RESUME_DATA = {
       forks_count: 0,
     },
   ],
-  
+
   publications: [
     {
       title: "Smart IoT Cookware System",
@@ -224,8 +224,18 @@ export const RESUME_DATA = {
       ]
     }
   ],
-  
+
   achievements: [
+    {
+      title: "NEP SAARTHI (National Education Policy Student Ambassador)",
+      date: "May 2026",
+      description: "Selected as an official UGC NEP SAARTHI through university-level screening, representing the institution under NEP.",
+      tags: ["NEP 2020", "UGC", "Leadership", "Ambassador"],
+      highlights: [
+        { text: "Representing the institution under NEP 2020", icon: "Award" },
+        { text: "Supporting student engagement & awareness initiatives", icon: "Users" }
+      ]
+    },
     {
       title: "Certified in AI Security and Governance",
       date: "January 2026",
@@ -259,7 +269,7 @@ export const RESUME_DATA = {
       ]
     },
   ],
-  
+
   blogs: [
     {
       slug: "from-idea-to-patent-smart-cooking-system",
