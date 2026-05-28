@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
-    const [theme, setTheme] = useState<"light" | "dark">("light");
+    const [theme, setTheme] = useState<"light" | "dark">("dark");
 
     useEffect(() => {
         // Check for saved theme preference or default to light
         const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-        const initialTheme = savedTheme || "light";
+        const initialTheme = savedTheme || "dark";
         setTheme(initialTheme);
         document.documentElement.classList.toggle("dark", initialTheme === "dark");
     }, []);

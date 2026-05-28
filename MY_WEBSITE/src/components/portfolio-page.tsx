@@ -25,6 +25,9 @@ import { AboutMeMorph } from "@/components/about-me-morph";
 import { DecryptText } from "@/components/decrypt-text";
 import { NameAnimationOverlay } from "@/components/magicui/hyper-text";
 import Marquee from "@/components/ui/marquee";
+import { IntrusionAlert } from "@/components/intrusion-alert";
+import { TypewriterText } from "@/components/typewriter-text";
+import { HiddenTerminal } from "@/components/hidden-terminal";
 
 interface PortfolioPageProps {
     initialRepoData: Repository[];
@@ -36,6 +39,7 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        console.log("%c FLAG 2: You found the console flag! %c flag{c0ns0l3_h4ck3r_pr0}", "color: #ff0000; font-size: 16px; font-weight: bold;", "color: #00ff00; font-size: 14px; font-family: monospace;");
     }, []);
 
     const commandLinks = [
@@ -46,21 +50,16 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
         })),
     ];
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setAnimationComplete(true);
-        }, 2000);
-        return () => clearTimeout(timer);
-    }, []);
-
     const GlassCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-        <div className={`relative overflow-hidden rounded-3xl border border-zinc-200 bg-white/40 p-6 sm:p-8 backdrop-blur-xl dark:border-white/10 dark:bg-black/20 shadow-sm transition-all hover:shadow-md ${className}`}>
+        <div className={`relative overflow-hidden rounded-3xl border border-red-500/20 bg-gradient-to-br from-white/60 to-red-100/60 p-6 sm:p-8 backdrop-blur-xl dark:border-red-900/30 dark:from-black/40 dark:to-red-950/20 shadow-[0_4px_30px_rgba(220,38,38,0.06)] dark:shadow-[0_4px_30px_rgba(220,38,38,0.05)] transition-all hover:border-red-500/40 dark:hover:border-red-800/40 hover:shadow-[0_8px_40px_rgba(220,38,38,0.12)] dark:hover:shadow-[0_8px_40px_rgba(220,38,38,0.12)] ${className}`}>
             {children}
         </div>
     );
 
     return (
         <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 pb-24 md:p-12 md:pb-24 print:p-12">
+            <IntrusionAlert />
+            <HiddenTerminal />
             <motion.div
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
@@ -71,8 +70,8 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                 }}
             >
                 {/* Background decorative blobs */}
-                <div className="pointer-events-none fixed left-0 top-0 z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-[100px] dark:bg-indigo-500/5" />
-                <div className="pointer-events-none fixed right-0 top-[20%] z-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-purple-500/10 blur-[100px] dark:bg-purple-500/5" />
+                <div className="pointer-events-none fixed left-0 top-0 z-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[100px] dark:bg-red-500/5" />
+                <div className="pointer-events-none fixed right-0 top-[20%] z-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-orange-500/10 blur-[100px] dark:bg-orange-500/5" />
 
                 <HoverNavbar links={commandLinks} />
                 
@@ -90,9 +89,9 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                                 <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                                     <DecryptText text={RESUME_DATA.name} autoStart={true} triggerOnView={false} />
                                 </h1>
-                                <p className="max-w-xl text-pretty font-mono text-sm leading-relaxed text-muted-foreground">
-                                    {RESUME_DATA.about}
-                                </p>
+                                <div className="max-w-xl text-pretty font-mono text-sm leading-relaxed text-muted-foreground min-h-[60px]">
+                                    <TypewriterText text={RESUME_DATA.about} delay={500} speed={25} start={animationComplete} />
+                                </div>
                                 <div className="flex flex-wrap gap-2 pt-2 font-mono text-sm text-muted-foreground print:hidden">
                                     {RESUME_DATA.contact.email && (
                                         <Button className="h-9 w-9 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/20 border-transparent shadow-none" variant="outline" size="icon" asChild>
@@ -120,7 +119,7 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                             <motion.div
                                 whileHover={{ scale: 1.05, rotate: -2 }}
                                 transition={{ type: "spring", stiffness: 300 }}
-                                className="relative h-28 w-28 sm:h-36 sm:w-36 shrink-0 overflow-hidden rounded-full border-4 border-white dark:border-zinc-800 bg-muted shadow-xl"
+                                className="glitch-hover-effect relative h-28 w-28 sm:h-36 sm:w-36 shrink-0 overflow-hidden rounded-full border-4 border-white dark:border-zinc-800 bg-muted shadow-xl cursor-crosshair"
                             >
                                 <Image
                                     src={RESUME_DATA.avatarUrl}
@@ -296,11 +295,18 @@ export function PortfolioPage({ initialRepoData }: PortfolioPageProps) {
                         </Section>
                     )}
                 </motion.section>
-            </motion.div>
 
+                {/* Easter Egg Footer */}
+                <div className="mt-24 mb-8 flex justify-center">
+                    <p className="text-center font-mono text-sm italic text-muted-foreground/50 transition-colors hover:text-muted-foreground">
+                        Did you discover all the easter eggs? Hope you enjoyed the hunt...
+                    </p>
+                </div>
+            </motion.div>
             <NameAnimationOverlay
                 name={RESUME_DATA.name}
                 subtitle={RESUME_DATA.about}
+                onComplete={() => setAnimationComplete(true)}
             />
         </main>
     );

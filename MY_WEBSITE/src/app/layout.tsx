@@ -91,10 +91,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              /* FLAG 1: You found the first flag! */
+              /* flag{w3lc0m3_t0_th3_s0urc3} */
               (function() {
                 try {
                   const theme = localStorage.getItem('theme');
-                  if (theme === 'dark') {
+                  if (theme === 'dark' || !theme) {
                     document.documentElement.classList.add('dark');
                   }
                 } catch (e) {}
@@ -107,7 +109,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <PostHogProvider>
           {children}
           <Analytics /> {/* Vercel Analytics */}

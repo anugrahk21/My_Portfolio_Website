@@ -19,7 +19,7 @@ export function DecryptText({
     autoStart = false,
     triggerOnView = true
 }: DecryptTextProps) {
-    const [displayText, setDisplayText] = useState(text.split("").map(() => " "));
+    const [displayText, setDisplayText] = useState(text.split("").map((char) => char === " " ? " " : "\u00A0"));
     const [hasDecrypted, setHasDecrypted] = useState(false);
     const elementRef = useRef<HTMLSpanElement>(null);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -37,6 +37,7 @@ export function DecryptText({
         intervalRef.current = setInterval(() => {
             setDisplayText((prev) =>
                 text.split("").map((char, index) => {
+                    if (char === " ") return " ";
                     if (iteration > index * 3) {
                         return text[index];
                     }
