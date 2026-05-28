@@ -27,6 +27,71 @@ export function IntrusionAlert() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isAlerting) return;
+
+    let audioCtx: AudioContext;
+    let osc: OscillatorNode;
+    let gainNode: GainNode;
+    let intervalId: NodeJS.Timeout;
+
+    // AUDIO BEEP ALARM (Synthesized Retro Siren)
+    try {
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+        osc = audioCtx.createOscillator();
+        gainNode = audioCtx.createGain();
+
+        osc.type = "square"; // Harsh retro sound
+        osc.frequency.value = 800;
+
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        // Pulsing frequency effect (High-Low alarm)
+        let isHigh = true;
+        intervalId = setInterval(() => {
+          if (audioCtx.state === "running") {
+            osc.frequency.setValueAtTime(isHigh ? 600 : 800, audioCtx.currentTime);
+            isHigh = !isHigh;
+          }
+        }, 300);
+
+        // Fade in volume (keep it low to not destroy ears)
+        gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.05); 
+        
+        osc.start();
+      }
+    } catch (e) {
+      console.error("Web Audio API not supported", e);
+    }
+
+    // VIBRATION ALARM (Mobile Devices)
+    if (typeof navigator !== "undefined" && navigator.vibrate) {
+      // Vibrate in an aggressive pulse pattern (on, off, on, off...)
+      navigator.vibrate([200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200]);
+    }
+
+    // Cleanup function when alert stops
+    return () => {
+      clearInterval(intervalId);
+      if (audioCtx) {
+        gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.1);
+        setTimeout(() => {
+          try {
+            osc.stop();
+            audioCtx.close();
+          } catch(e) {}
+        }, 150);
+      }
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        navigator.vibrate(0);
+      }
+    };
+  }, [isAlerting]);
+
   return (
     <AnimatePresence>
       {isAlerting && (
