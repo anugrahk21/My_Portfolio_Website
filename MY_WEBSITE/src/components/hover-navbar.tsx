@@ -12,6 +12,7 @@ import {
   GraduationCapIcon,
   FileTextIcon,
   CommandIcon,
+  CpuIcon,
 } from "lucide-react";
 import { scrollToSection } from "@/lib/utils";
 import {
@@ -59,9 +60,9 @@ export function HoverNavbar({ links = [], navItems: customNavItems, showCommandM
   const defaultNavItems = [
     { name: "Home", icon: <HomeIcon className="h-5 w-5" />, href: "/#top" },
     {
-      name: "About",
-      icon: <FileTextIcon className="h-5 w-5" />,
-      href: "/#about",
+      name: "Skills",
+      icon: <CpuIcon className="h-5 w-5" />,
+      href: "/#skills",
     },
     {
       name: "Projects",
