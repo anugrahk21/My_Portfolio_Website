@@ -146,6 +146,13 @@ export function HyperText({
 }
 
 // Reusable Name Animation Overlay Component
+
+const SECURITY_QUESTIONS = [
+  { hint: "Hint: Default SSH port", answer: "22" },
+  { hint: "Hint: Default HTTPS port", answer: "443" },
+  { hint: "Hint: HTTP status code for 'Not Found'", answer: "404" },
+];
+
 interface NameAnimationOverlayProps {
   name: string;
   subtitle: string;
@@ -168,6 +175,11 @@ export function NameAnimationOverlay({
   const [attempts, setAttempts] = useState(0);
   const [showError, setShowError] = useState(false);
   const [skipAnimation, setSkipAnimation] = useState(false);
+  const [questionIndex, setQuestionIndex] = useState(0);
+
+  useEffect(() => {
+    setQuestionIndex(Math.floor(Math.random() * SECURITY_QUESTIONS.length));
+  }, []);
 
   useEffect(() => {
     if (sessionKey && sessionStorage.getItem(sessionKey) === "true") {
@@ -204,8 +216,8 @@ export function NameAnimationOverlay({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Allow access if password is "22" or after 3 failed attempts
-    if (inputValue === "22" || attempts >= 2) {
+    // Allow access if password is correct or after 3 failed attempts
+    if (inputValue === SECURITY_QUESTIONS[questionIndex].answer || attempts >= 2) {
       setStage('kidding');
     } else {
       setAttempts((prev) => prev + 1);
@@ -334,7 +346,7 @@ export function NameAnimationOverlay({
                         ACCESS DENIED
                       </motion.p>
                     ) : (
-                      <p className="text-muted-foreground/70">Hint: Default SSH port</p>
+                      <p className="text-muted-foreground/70">{SECURITY_QUESTIONS[questionIndex].hint}</p>
                     )}
                   </div>
                 </motion.div>
