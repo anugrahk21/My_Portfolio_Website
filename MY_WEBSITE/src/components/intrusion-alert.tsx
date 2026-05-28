@@ -11,10 +11,18 @@ export function IntrusionAlert() {
     const triggerAlert = (e: Event) => {
       e.preventDefault();
       setIsAlerting(true);
+
+      // Trigger vibration synchronously to bypass strict mobile browser policies
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        navigator.vibrate([200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200]);
+      }
       
       // Auto dismiss after 2.5 seconds
       setTimeout(() => {
         setIsAlerting(false);
+        if (typeof navigator !== "undefined" && navigator.vibrate) {
+          navigator.vibrate(0);
+        }
       }, 2500);
     };
 
@@ -68,12 +76,6 @@ export function IntrusionAlert() {
       console.error("Web Audio API not supported", e);
     }
 
-    // VIBRATION ALARM (Mobile Devices)
-    if (typeof navigator !== "undefined" && navigator.vibrate) {
-      // Vibrate in an aggressive pulse pattern (on, off, on, off...)
-      navigator.vibrate([200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200, 100, 200]);
-    }
-
     // Cleanup function when alert stops
     return () => {
       clearInterval(intervalId);
@@ -85,9 +87,6 @@ export function IntrusionAlert() {
             audioCtx.close();
           } catch(e) {}
         }, 150);
-      }
-      if (typeof navigator !== "undefined" && navigator.vibrate) {
-        navigator.vibrate(0);
       }
     };
   }, [isAlerting]);
